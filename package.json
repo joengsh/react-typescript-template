@@ -5,12 +5,22 @@
   "author": "Joe Ng",
   "license": "MIT",
   "devDependencies": {
+    "@babel/core": "^7.20.5",
     "@joengsh/eslint-config-react": "1.1.0",
     "@joengsh/prettier-config": "^1.0.2",
+    "@storybook/addon-actions": "^6.5.14",
+    "@storybook/addon-essentials": "^6.5.14",
+    "@storybook/addon-interactions": "^6.5.14",
+    "@storybook/addon-links": "^6.5.14",
+    "@storybook/builder-webpack5": "^6.5.14",
+    "@storybook/manager-webpack5": "^6.5.14",
+    "@storybook/react": "^6.5.14",
+    "@storybook/testing-library": "^0.0.13",
     "@types/react": "^17.0.52",
     "@types/react-dom": "^17.0.18",
     "@typescript-eslint/eslint-plugin": "^5.30.0",
     "@typescript-eslint/parser": "^5.30.0",
+    "babel-loader": "^8.3.0",
     "css-loader": "^6.7.2",
     "eslint": "^8.19.0",
     "eslint-config-prettier": "^8.5.0",
@@ -41,7 +51,9 @@
     "lint-staged": "lint-staged",
     "format": "prettier --write 'src/**/*.{js,jsx,ts,tsx,css}'",
     "lint": "eslint . --ext .js,.jsx,.ts,.tsx",
-    "lint-fix": "eslint --fix . --ext .js,.jsx,.ts,.tsx"
+    "lint-fix": "eslint --fix . --ext .js,.jsx,.ts,.tsx",
+    "storybook": "start-storybook -p 6006",
+    "build-storybook": "build-storybook"
   },
   "lint-staged": {
     "*.{js,jsx,ts,tsx,css,json,md,mdx}": [

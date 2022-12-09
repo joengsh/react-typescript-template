@@ -114,29 +114,6 @@ ReactDOM.render(<App />, rootNode);
 npx storybook init
 ```
 
-### playerclient lib
-
-_link.sh_ will be executed after yarn install. It will clone player-client-lib repo and then create the symlink and link to it.
-
-### Environment Variable
-
-```bash
-# all env variable are for buildtime
-
-RABBITMQ_VIRTUAL_HOST=/
-RABBITMQ_PROTOCOL=wss
-RABBITMQ_PORT=443
-PATH=/ws/mqtt
-CONNECT_TIMEOUT=100000
-ENV=production
-ENDPOINT_SUBDOMAIN=rest-gateway
-
-# PLAYER_ID and SECRET are used for development only
-
-PLAYERID=PLAYER_ID
-SECRET=AUTH_SECRET
-```
-
 ## Commit Message
 
 1. Understanding Angular Commit Message

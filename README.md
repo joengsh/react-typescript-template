@@ -67,6 +67,42 @@ Add pre-commit hook
 npx husky add .husky/pre-commit "yarn lint-staged"
 ```
 
+### jest and react-testing-library
+
+```bash
+yarn add -D @types/jest @testing-library/react @testing-library/jest-dom jest ts-jest
+yarn ts-jest
+```
+
+jest.config.js
+
+```js
+module.exports = {
+  preset: 'ts-jest',
+  testEnvironment: 'jsdom',
+  setupFilesAfterEnv: ['@testing-library/jest-dom/extend-expect'],
+  moduleNameMapper: {
+    '\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$':
+      '<rootDir>/src/__test__/mock/fileMock.ts',
+    '\\.(css|less)$': '<rootDir>/src/__test__/mock/styleMock.ts',
+  },
+};
+```
+
+fileMock.ts
+
+```js
+export default 'test-file-stub';
+```
+
+styleMock.ts
+
+```js
+export default {};
+```
+
+reference: https://plainenglish.io/blog/the-practical-guide-to-start-react-testing-library-with-typescript-d386804a018
+
 ### storybook
 
 **downgrade to react 17**

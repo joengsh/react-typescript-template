@@ -3,6 +3,7 @@ const prod = process.env.NODE_ENV === 'production';
 
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const ForkTsCheckerPlugin = require('fork-ts-checker-webpack-plugin');
 
 module.exports = {
   mode: prod ? 'production' : 'development',
@@ -10,58 +11,54 @@ module.exports = {
   output: {
     path: __dirname + '/dist/',
   },
-  module: {
-    rules: [
-      {
-        test: /\.(ts|tsx)$/,
-        exclude: /node_modules/,
-        resolve: {
-          extensions: ['.ts', '.tsx', '.js', '.json'],
-        },
-        use: 'ts-loader',
-      },
-      {
-        test: /\.css$/,
-        use: [MiniCssExtractPlugin.loader, 'css-loader', 'postcss-loader'],
-      },
-    ],
+  module: getLoaders(),
+  plugins: getPlugins(),
+  devServer: {
+    static: './public',
+    hot: true,
   },
   devtool: prod ? undefined : 'source-map',
-  plugins: [
-    new HtmlWebpackPlugin({
-      template: 'index.html',
-    }),
-    new MiniCssExtractPlugin(),
-  ],
 };
 
-// /**
-//  * Loaders used by the application.
-//  */
-// function getLoaders() {
-//   const esbuild = {
-//     test: /\.(js|jsx|ts|tsx)?$/,
-//     loader: 'esbuild-loader',
-//     options: {
-//       loader: 'tsx',
-//       target: 'es2015'
-//     },
-//     exclude: /node_modules/
-//   };
+/**
+ * Loaders used by the application.
+ */
+function getLoaders() {
+  const esbuild = {
+    test: /\.(js|jsx|ts|tsx)?$/,
+    loader: 'esbuild-loader',
+    options: {
+      loader: 'tsx',
+      target: 'es2020',
+    },
+    // use: 'ts-loader',
+    exclude: /node_modules/,
+    resolve: {
+      extensions: ['.ts', '.js', '.tsx', '.jsx', 'json'],
+    },
+  };
 
-//   const loaders = {
-//     rules: [esbuild]
-//   };
+  const cssRule = {
+    test: /\.css$/,
+    use: [MiniCssExtractPlugin.loader, 'css-loader', 'postcss-loader'],
+  };
 
-//   return loaders;
-// }
+  const loaders = {
+    rules: [esbuild, cssRule],
+  };
 
-// /**
-//  * Plugins
-//  */
-// function getPlugins() {
-//   const nodemon = new NodemonPlugin();
-//   const tsChecker = new ForkTsCheckerPlugin();
+  return loaders;
+}
 
-//   return [tsChecker, nodemon];
-// }
+/**
+ * Plugins
+ */
+function getPlugins() {
+  const htmlWebpack = new HtmlWebpackPlugin({
+    template: 'index.html',
+  });
+  const miniCssExtract = new MiniCssExtractPlugin();
+  const tsChecker = new ForkTsCheckerPlugin();
+
+  return [tsChecker, htmlWebpack, miniCssExtract];
+}

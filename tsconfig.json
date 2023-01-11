@@ -1,14 +1,23 @@
 {
   "compilerOptions": {
     "esModuleInterop": true,
-    "jsx": "react",
     "module": "commonjs",
     "moduleResolution": "node",
     "lib": ["dom", "ES6"],
     "strict": true,
     "sourceMap": true,
     "target": "ES6",
-    "rootDir": "src"
+    "jsx": "react-jsx",
+    "baseUrl": "./",
+    "paths": {
+      "@/*": ["src/*"],
+      "@assets/*": ["src/assets/*"],
+      "@components/*": ["src/components/*"],
+      "@common/*": ["../fe-design-system-ts/src/*"],
+      "@connection/*": ["../fe-connection-ts/src/*"]
+    }
   },
-  "exclude": ["node_modules"]
+  "types": ["node", "jest", "@testing-library/jest-dom"],
+  "exclude": ["node_modules", "./cypress.config.ts"],
+  "include": ["src"]
 }

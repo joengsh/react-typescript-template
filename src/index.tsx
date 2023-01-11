@@ -1,9 +1,14 @@
 import React from 'react';
-// import ReactDOM from 'react-dom';
 import ReactDOM from 'react-dom/client';
-import App from './app';
 import './index.css';
+import 'tw-elements';
+import { createBrowserRouter, RouterProvider } from 'react-router-dom';
+import routes from '@components/templates/Routes/Routes';
 
-// ReactDOM.render(<App />, document.getElementById('app-root'));
+const router = createBrowserRouter(routes);
 
-ReactDOM.createRoot(document.getElementById('app-root') as HTMLElement).render(<App />);
+ReactDOM.createRoot(document.getElementById('app-root') as HTMLElement).render(
+  <React.StrictMode>
+    <RouterProvider router={router} />
+  </React.StrictMode>
+);

@@ -4,6 +4,7 @@ const prod = process.env.NODE_ENV === 'production';
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const ForkTsCheckerPlugin = require('fork-ts-checker-webpack-plugin');
+const path = require('path');
 
 module.exports = {
   mode: prod ? 'production' : 'development',
@@ -18,6 +19,13 @@ module.exports = {
     hot: true,
   },
   devtool: prod ? undefined : 'source-map',
+  resolve: {
+    alias: {
+      '@': path.resolve(__dirname, 'src/'),
+      '@components': path.resolve(__dirname, 'src/components'),
+      '@assets': path.resolve(__dirname, 'src/assets'),
+    },
+  },
 };
 
 /**
@@ -34,7 +42,7 @@ function getLoaders() {
     // use: 'ts-loader',
     exclude: /node_modules/,
     resolve: {
-      extensions: ['.ts', '.js', '.tsx', '.jsx', 'json'],
+      extensions: ['.ts', '.js', '.tsx', '.jsx', '.json'],
     },
   };
 
@@ -43,8 +51,21 @@ function getLoaders() {
     use: [MiniCssExtractPlugin.loader, 'css-loader', 'postcss-loader'],
   };
 
+  const svgRule = {
+    test: /\.svg$/i,
+    issuer: /\.[jt]sx?$/,
+    resourceQuery: { not: [/url/] }, // exclude react component if *.svg?url
+    use: ['@svgr/webpack'],
+  };
+
+  const svgUrlRule = {
+    test: /\.svg$/i,
+    type: 'asset',
+    resourceQuery: /url/, // *.svg?url
+  };
+
   const loaders = {
-    rules: [esbuild, cssRule],
+    rules: [esbuild, cssRule, svgRule, svgUrlRule],
   };
 
   return loaders;

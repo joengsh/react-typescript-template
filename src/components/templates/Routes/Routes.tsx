@@ -1,5 +1,5 @@
 import { Page } from '@/stories/Page';
-import App from '@components/App/App';
+import App from '@/App/App';
 import React from 'react';
 import { createRoutesFromElements, Route } from 'react-router-dom';
 import DummyLayout from '../Layout/Layout';

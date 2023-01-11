@@ -1,4 +1,4 @@
-import App from '@components/App/App';
+import App from '@/App/App';
 
 describe('App', () => {
   it('playground', () => {

@@ -8,14 +8,14 @@ exports[`App should match snapshot 1`] = `
   >
     <div>
       <a
-        href="https://vitejs.dev"
+        href="https://reactjs.org"
         rel="noreferrer"
         target="_blank"
       >
-        <img
-          alt="Vite logo"
+        <div
           class="logo"
-          src="/vite.svg"
+          height="96"
+          width="96"
         />
       </a>
     </div>

@@ -2,9 +2,9 @@ import Footer from '@components/organisms/Footer/Footer';
 import Hero from '@components/organisms/Hero/Hero';
 import Carousel from '@components/molecules/Carousel/Carousel';
 import './App.css';
-import Logo from '@/assets/react.svg';
-import { useEffect } from 'react';
 import React from 'react';
+import Logo from '@assets/react.svg';
+import { useEffect } from 'react';
 
 function App() {
   useEffect(() => {

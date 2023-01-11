@@ -34,3 +34,34 @@ module.exports = {
     new MiniCssExtractPlugin(),
   ],
 };
+
+// /**
+//  * Loaders used by the application.
+//  */
+// function getLoaders() {
+//   const esbuild = {
+//     test: /\.(js|jsx|ts|tsx)?$/,
+//     loader: 'esbuild-loader',
+//     options: {
+//       loader: 'tsx',
+//       target: 'es2015'
+//     },
+//     exclude: /node_modules/
+//   };
+
+//   const loaders = {
+//     rules: [esbuild]
+//   };
+
+//   return loaders;
+// }
+
+// /**
+//  * Plugins
+//  */
+// function getPlugins() {
+//   const nodemon = new NodemonPlugin();
+//   const tsChecker = new ForkTsCheckerPlugin();
+
+//   return [tsChecker, nodemon];
+// }

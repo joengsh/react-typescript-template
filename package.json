@@ -6,6 +6,8 @@
   "license": "MIT",
   "devDependencies": {
     "@babel/core": "^7.20.5",
+    "@commitlint/cli": "^17.4.1",
+    "@commitlint/config-conventional": "^17.4.0",
     "@joengsh/eslint-config-react": "^1.1.0",
     "@joengsh/prettier-config": "^1.0.2",
     "@mdx-js/react": "^2.2.1",

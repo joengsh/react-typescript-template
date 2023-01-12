@@ -5,6 +5,7 @@ import './App.css';
 import React from 'react';
 import Logo from '@assets/react.svg';
 import { useEffect } from 'react';
+import 'tw-elements';
 
 function App() {
   useEffect(() => {

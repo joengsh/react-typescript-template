@@ -16,6 +16,7 @@ storybook-static
 coverage
 cypress/videos
 cypress/screenshots
+stats.json
 
 # Editor directories and files
 .vscode/*

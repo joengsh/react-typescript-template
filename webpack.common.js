@@ -73,7 +73,7 @@ function getPlugins() {
   });
   const miniCssExtract = new MiniCssExtractPlugin();
   const tsChecker = new ForkTsCheckerPlugin();
-  const analyzer = new BundleAnalyzerPlugin();
+  const analyzer = new BundleAnalyzerPlugin({ analyzerMode: 'disabled' });
 
   return [tsChecker, htmlWebpack, miniCssExtract, analyzer];
 }

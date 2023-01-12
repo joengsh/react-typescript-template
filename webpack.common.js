@@ -1,24 +1,17 @@
 /* eslint-disable @typescript-eslint/no-var-requires */
-const prod = process.env.NODE_ENV === 'production';
-
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const ForkTsCheckerPlugin = require('fork-ts-checker-webpack-plugin');
+const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 const path = require('path');
 
 module.exports = {
-  mode: prod ? 'production' : 'development',
   entry: './src/index.tsx',
   output: {
     path: __dirname + '/dist/',
   },
   module: getLoaders(),
   plugins: getPlugins(),
-  devServer: {
-    static: './public',
-    hot: true,
-  },
-  devtool: prod ? undefined : 'source-map',
   resolve: {
     alias: {
       '@': path.resolve(__dirname, 'src/'),
@@ -80,6 +73,7 @@ function getPlugins() {
   });
   const miniCssExtract = new MiniCssExtractPlugin();
   const tsChecker = new ForkTsCheckerPlugin();
+  const analyzer = new BundleAnalyzerPlugin();
 
-  return [tsChecker, htmlWebpack, miniCssExtract];
+  return [tsChecker, htmlWebpack, miniCssExtract, analyzer];
 }

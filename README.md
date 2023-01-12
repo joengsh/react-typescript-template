@@ -154,3 +154,16 @@ npx storybook init
 
 1. Understanding Angular Commit Message
    Link: [https://nitayneeman.com/posts/understanding-semantic-commit-messages-using-git-and-angular]
+
+## Reference:
+
+- [React re-renders guide](https://www.developerway.com/posts/react-re-renders-guide)
+- [use-context-selector](https://dev.to/romaintrotard/use-context-selector-demystified-4f8e)
+- [Framer motion](https://www.framer.com/motion/)
+- [tailwindcss dashboard sample](https://tailwindcomponents.com/component/responsive-admin-template)
+- [tailwind components](https://dev.to/cruip/25-places-where-you-can-get-free-tailwind-css-components-47lm)
+- [hyperui](https://www.hyperui.dev/)
+- [mambaui](https://mambaui.com/components)
+- [datepicker](https://react-tailwindcss-datepicker.vercel.app/demo)
+- [merge coverage report](https://dev.to/penx/combining-storybook-cypress-and-jest-code-coverage-4pa5)
+- [storybook testrunner](https://storybook.js.org/addons/@storybook/test-runner)

@@ -1,7 +1,7 @@
+/* eslint-disable @typescript-eslint/no-var-requires */
 import { defineConfig } from 'cypress';
 import coverageTask from '@cypress/code-coverage/task';
 import webpackDev from './webpack.dev';
-// import webpackProd from './webpack.prod';
 
 export default defineConfig({
   env: {
@@ -9,6 +9,7 @@ export default defineConfig({
       exclude: ['cypress/**/*.*', 'src/main.tsx'],
     },
   },
+
   component: {
     devServer: {
       framework: 'react',
@@ -23,7 +24,6 @@ export default defineConfig({
 
   e2e: {
     setupNodeEvents(on, config) {
-      // implement node event listeners here
       coverageTask(on, config);
       return config;
     },

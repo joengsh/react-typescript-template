@@ -27,6 +27,11 @@ module.exports = {
  * Loaders used by the application.
  */
 function getLoaders() {
+  const babel = {
+    test: /\.(js|jsx|ts|tsx)?$/,
+    loader: 'babel-loader',
+  };
+
   const esbuild = {
     test: /\.(js|jsx|ts|tsx)?$/,
     loader: 'esbuild-loader',
@@ -60,7 +65,7 @@ function getLoaders() {
   };
 
   const loaders = {
-    rules: [esbuild, cssRule, svgRule, svgUrlRule],
+    rules: [babel, esbuild, cssRule, svgRule, svgUrlRule],
   };
 
   return loaders;

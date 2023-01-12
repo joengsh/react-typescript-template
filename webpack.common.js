@@ -5,6 +5,8 @@ const ForkTsCheckerPlugin = require('fork-ts-checker-webpack-plugin');
 const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 const path = require('path');
 
+const shouldGenReport = process.env.WEBPACK_REPORT === 'true';
+
 module.exports = {
   entry: './src/index.tsx',
   output: {
@@ -73,7 +75,9 @@ function getPlugins() {
   });
   const miniCssExtract = new MiniCssExtractPlugin();
   const tsChecker = new ForkTsCheckerPlugin();
-  const analyzer = new BundleAnalyzerPlugin({ analyzerMode: 'disabled' });
+  const analyzer = new BundleAnalyzerPlugin({
+    analyzerMode: shouldGenReport ? 'server' : 'disabled',
+  });
 
   return [tsChecker, htmlWebpack, miniCssExtract, analyzer];
 }

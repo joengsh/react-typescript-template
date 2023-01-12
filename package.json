@@ -77,7 +77,7 @@
     "start": "webpack serve --port 3000 --open --config webpack.dev.js",
     "build": "NODE_ENV=production webpack --config webpack.prod.js",
     "preview": "npx serve dist",
-    "report": "webpack --profile --json --config webpack.prod.js > stats.json; webpack-bundle-analyzer ./stats.json",
+    "report": "WEBPACK_REPORT=true webpack --profile --config webpack.prod.js --json > stats.json; webpack-bundle-analyzer ./stats.json",
     "prepare": "husky install",
     "lint-staged": "lint-staged",
     "format": "prettier --write 'src/**/*.{js,jsx,ts,tsx,css}'",

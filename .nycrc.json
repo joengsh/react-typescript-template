@@ -11,6 +11,8 @@
     "**/*.spec.*",
     "**/*.stories.*",
     "**/*.cy.tsx",
-    "**/*.cy.ts"
+    "**/*.cy.ts",
+    "src/__test__/**/*",
+    "src/index.tsx"
   ]
 }

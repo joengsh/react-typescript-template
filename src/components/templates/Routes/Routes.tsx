@@ -1,16 +1,16 @@
 import { Page } from '@/stories/Page';
-// import App from '@/App/App';
 import React, { Suspense } from 'react';
 import { createRoutesFromElements, Route } from 'react-router-dom';
 import DummyLayout from '../Layout/Layout';
+// import App from '@/App/App';
+const App = React.lazy(() => import('@/App/App'));
+// const App = React.lazy(() => import('@/App/App').then((module) => ({ default: module.default })));
 
 const SuspenseLayout = () => (
   <Suspense fallback={<div>Suspense Loading...</div>}>
     <DummyLayout />
   </Suspense>
 );
-
-const App = React.lazy(() => import('@/App/App').then((module) => ({ default: module.default })));
 
 const routes = createRoutesFromElements(
   <Route path="/" element={<SuspenseLayout />}>

@@ -4,14 +4,9 @@ import Carousel from '@components/molecules/Carousel/Carousel';
 import './App.css';
 import React from 'react';
 import Logo from '@assets/react.svg';
-import { useEffect } from 'react';
 import 'tw-elements';
 
 function App() {
-  useEffect(() => {
-    console.log('app');
-  }, []);
-
   return (
     <div className="App" data-testid="app">
       <div>

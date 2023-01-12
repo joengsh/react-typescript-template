@@ -1,27 +1,28 @@
-// /** @type {import('ts-jest').JestConfigWithTsJest} */
+/** @type {import('ts-jest').JestConfigWithTsJest} */
 module.exports = {
-  // preset: 'ts-jest',
+  preset: 'ts-jest',
   testEnvironment: 'jsdom',
   roots: ['<rootDir>/src'],
+  extensionsToTreatAsEsm: ['.ts', '.tsx'],
   collectCoverageFrom: [
     'src/**/*.{js,jsx,ts,tsx}',
     '!src/**/*.d.ts',
     '!src/__test__/**/*',
     '!src/index.tsx',
   ],
-  setupFilesAfterEnv: ['./config/jest/setupTests.js'],
+  setupFilesAfterEnv: ['./config/jest/setupTests.ts'],
   snapshotResolver: '<rootDir>/config/jest/snapshotResolver.js',
-  transform: {
-    '^.+\\.(t|j)sx?$': [
-      'esbuild-jest',
-      {
-        sourcemap: true,
-        loaders: {
-          '.spec.ts': 'tsx',
-        },
-      },
-    ],
-  },
+  // transform: {
+  //   '^.+\\.(t|j)sx?$': [
+  //     'esbuild-jest',
+  //     {
+  //       sourcemap: true,
+  //       loaders: {
+  //         '.spec.ts': 'tsx',
+  //       },
+  //     },
+  //   ],
+  // },
   moduleNameMapper: {
     '^@/(.*)$': '<rootDir>/src/$1',
     '^@components/(.*)$': '<rootDir>/src/components/$1',
@@ -31,4 +32,5 @@ module.exports = {
     '\\.(css|less)$': '<rootDir>/src/__test__/mock/styleMock.ts',
     '\\.svg$': '<rootDir>/src/__test__/mock/svg.ts',
   },
+  coverageDirectory: 'coverage/jest',
 };

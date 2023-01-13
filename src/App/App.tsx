@@ -7,6 +7,7 @@ import Logo from '@assets/react.svg';
 import 'tw-elements';
 
 function App() {
+  console.log(process.env.CYPRESS_BASE_URL);
   return (
     <div className="App" data-testid="app">
       <div>

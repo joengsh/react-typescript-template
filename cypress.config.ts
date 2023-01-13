@@ -2,7 +2,9 @@
 import { defineConfig } from 'cypress';
 import coverageTask from '@cypress/code-coverage/task';
 import webpackDev from './webpack.dev';
-require('dotenv').config({ path: `.env` });
+const dotenvFile = require('./config/utils').dotenvFile;
+
+require('dotenv').config({ path: dotenvFile() });
 
 export default defineConfig({
   env: {

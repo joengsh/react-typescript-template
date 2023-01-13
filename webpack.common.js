@@ -4,6 +4,7 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const ForkTsCheckerPlugin = require('fork-ts-checker-webpack-plugin');
 const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 const webpack = require('webpack'); // only add this if you don't have yet
+const dotenvFile = require('./config/utils').dotenvFile;
 
 // replace accordingly './.env' with the path of your .env file
 const Dotenv = require('dotenv-webpack');
@@ -28,6 +29,7 @@ module.exports = {
       '@': path.resolve(__dirname, 'src/'),
       '@components': path.resolve(__dirname, 'src/components'),
       '@assets': path.resolve(__dirname, 'src/assets'),
+      '@utils': path.resolve(__dirname, 'src/utils'),
       process: 'process/browser',
     },
   },
@@ -96,7 +98,10 @@ function getPlugins() {
   const processPlugin = new webpack.ProvidePlugin({
     process: 'process/browser',
   });
-  const dotenvPlugin = new Dotenv();
+
+  const dotenvPlugin = new Dotenv({
+    path: dotenvFile(),
+  });
 
   return [tsChecker, htmlWebpack, miniCssExtract, analyzer, processPlugin, dotenvPlugin];
 }

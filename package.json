@@ -1,5 +1,5 @@
 {
-  "name": "fe-portfolio-react-ts",
+  "name": "react-webpack-template",
   "version": "1.0.0",
   "main": "index.js",
   "author": "Joe Ng",
@@ -121,6 +121,9 @@
     "*.{js,jsx,ts,tsx}": [
       "eslint --fix",
       "git add"
+    ],
+    "src/**/*.{js,jsx,ts,tsx}": [
+      "yarn jest:staged"
     ]
   },
   "dependencies": {

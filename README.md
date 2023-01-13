@@ -1,159 +1,83 @@
-# fe-portfolio-react-ts
+# react-webpack-template
 
-## setup
+## Introduction
 
-### Change Environment Profile(development, staging, release, uat, production) for webpack dev
+Thi is a template of a react project bundling using webpack. Here are the feature of this template:
 
-Please change the following line of the file [webpack.develop.js](config/webpack.develop.js) if you need different endpoint for your environment.
+- use storybook for component showcase and documentation
+- use jest for unit test
+- use cypress for component test and e2e test
+- coverage report combining jest and cypress component test
+- enforce convertional commit message
+- eslint and prettier for code rules and styling
+- import tailwindcss with tw-element
+- support [universal-dotenv](https://github.com/sebastian-software/universal-dotenv) logic.
 
-> path: path.resolve(\_\_dirname, './.env.development'),
+## Setup
 
-E.g. If you want to use production as your endpoint, please change _.env.development_ to _.env.production_ .
-
-### eslint & prettier
-
-https://itnext.io/auto-format-with-eslint-and-prettier-for-react-typescript-project-6526a9d44f81
-
-cra default support eslint. All we need to do is to add custom extends and rules.
-
-```bash
-yarn add -D eslint-config-prettier eslint-plugin-prettier prettier @joengsh/eslint-config-react @joengsh/prettier-config
-npx install-peerdeps --dev @joengsh/eslint-config-react
-npx install-peerdeps --dev @joengsh/prettier-config
-```
-
-```javascript
-// .prettierrc.js
-module.exports = {
-  ...require('@joengsh/prettier-config'),
-  semi: false,
-};
-
-// package.json or .eslintrc.js
-module.exports = {
-  extends: ['@joengsh/eslint-config-react/cra'],
-};
-```
-
-### lint-staged and husky
+To setup and run the project. Simply run the following:
 
 ```bash
-yarn add -D husky lint-staged
+#npm
+npm install
+npm start
+#yarn
+yarn
+yarn start
 ```
 
-Add lint-staged config
+## Build
+
+To build the project, run the `build` script
+To preview the project, you can use `serve`, or run `preview` script
+To analyse the build files, run the `report` script
+
+## Storybook
+
+When developing a component. You may run the storybook while coding.
+
+```bash
+#npm
+npm run storybook
+#yarn
+yarn storybook
+```
+
+Storybook can be build by using the `build-storybook` script.
+
+## Test
+
+| script           | when to use                           | description                                                              |
+| ---------------- | ------------------------------------- | ------------------------------------------------------------------------ |
+| jest:staged      | when commit (husky)                   | run test cases corresponding to the modified src                         |
+| jest             | merge to release & uat & production   | run all the jest test                                                    |
+| cy:run-unit      | merge to release & uat & production   | run all cypress component test                                           |
+| test             | merge to release & uat & production   | run all jest and cypress component test                                  |
+| coverage         | merge to release & uat & production   | run all jest and cypress component test and generate the coverage report |
+| cy:run-e2e:smoke | merge to release & uat & production   | run all cypress e2e smoke test                                           |
+| cy:run-e2e       | uat or production env when applicable | run all cypress e2e smoke test                                           |
+
+## convertional commit message
+
+https://www.conventionalcommits.org/en/v1.0.0/ <br />
+https://github.com/conventional-changelog/commitlint/tree/master/%40commitlint/config-conventional
+
+## src folder structure
+
+The src folder follows the structure of an [atomic redesign](https://github.com/takefumi-yoshii/atomic-redesign). Similar to atomic design described in [here](https://medium.com/yemeksepeti-teknoloji/atomic-design-system-in-frontend-bdbb919290b4) and also [here](https://paulonteri.com/thoughts/atomic-design-react).
+
+Main difference is that atomic design focus on the UI component while atomic redesign also take the props, state and context into account.
+
+## alias
 
 ```json
 {
-  /*...*/
-  "scripts": {
-    "prepare": "husky install",
-    "lint-staged": "lint-staged",
-    "format": "prettier --write 'src/**/*.{js,jsx,ts,tsx,css}'",
-    "lint": "eslint . --ext .js,.jsx,.ts,.tsx",
-    "lint-fix": "eslint --fix . --ext .js,.jsx,.ts,.tsx"
-  },
-  "lint-staged": {
-    "*.{js,jsx,ts,tsx,css,json,md,mdx}": ["prettier --write", "git add"],
-    "*.{js,jsx,ts,tsx}": ["eslint --fix", "git add"]
-  }
-  /*...*/
+  "@/*": ["src/*"],
+  "@assets/*": ["src/assets/*"],
+  "@components/*": ["src/components/*"],
+  "@utils/*": ["src/utils/*"]
 }
 ```
-
-Add pre-commit hook
-
-```bash
-npx husky add .husky/pre-commit "yarn lint-staged"
-```
-
-### jest and react-testing-library
-
-```bash
-yarn add -D @types/jest @testing-library/react @testing-library/jest-dom jest ts-jest
-yarn ts-jest
-```
-
-jest.config.js
-
-```js
-module.exports = {
-  preset: 'ts-jest',
-  testEnvironment: 'jsdom',
-  setupFilesAfterEnv: ['@testing-library/jest-dom/extend-expect'],
-  moduleNameMapper: {
-    '\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$':
-      '<rootDir>/src/__test__/mock/fileMock.ts',
-    '\\.(css|less)$': '<rootDir>/src/__test__/mock/styleMock.ts',
-  },
-};
-```
-
-fileMock.ts
-
-```js
-export default 'test-file-stub';
-```
-
-styleMock.ts
-
-```js
-export default {};
-```
-
-reference: https://plainenglish.io/blog/the-practical-guide-to-start-react-testing-library-with-typescript-d386804a018
-
-### storybook
-
-**downgrade to react 17**
-
-since storybook not fully support react 18, so we need to downgrade to react 17 first. We can manually change the version number in package.json and force install again.
-
-```json
-{
-  // suggested version
-  "dependencies": {
-    "@testing-library/react": "^12.1.5",
-    "@types/react": "^17.0.0",
-    "@types/react-dom": "^17.0.0",
-    "react": "^17.0.2",
-    "react-dom": "^17.0.2"
-  }
-}
-```
-
-```bash
-yarn install --force
-```
-
-Then we need to update index.tsx
-
-```typescript
-// import ReactDOM from 'react-dom/client';
-
-// const root = ReactDOM.createRoot(document.getElementById('root') as HTMLElement);
-// root.render(
-//   <React.StrictMode>
-//     <App />
-//   </React.StrictMode>
-// );
-
-import ReactDOM from 'react-dom';
-
-const rootNode = document.getElementById('root');
-ReactDOM.render(<App />, rootNode);
-```
-
-**install storybook**
-
-```bash
-npx storybook init
-```
-
-## Commit Message
-
-1. Understanding Angular Commit Message
-   Link: [https://nitayneeman.com/posts/understanding-semantic-commit-messages-using-git-and-angular]
 
 ## Reference:
 

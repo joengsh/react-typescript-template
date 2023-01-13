@@ -2,15 +2,15 @@
 const fs = require('fs');
 module.exports = {
   dotenvFile: () => {
-    const ENV_CONTEXT = process.env.ENV_CONTEXT;
+    const BUILD_TARGET = process.env.BUILD_TARGET;
     const NODE_ENV = process.env.NODE_ENV;
     const dotEnvBase = '.env';
 
     const dotenvFiles = [
-      ENV_CONTEXT && NODE_ENV && `${dotEnvBase}.${ENV_CONTEXT}.${NODE_ENV}.local`,
-      ENV_CONTEXT && NODE_ENV && `${dotEnvBase}.${ENV_CONTEXT}.${NODE_ENV}`,
-      ENV_CONTEXT && NODE_ENV !== 'test' && `${dotEnvBase}.${ENV_CONTEXT}.local`,
-      ENV_CONTEXT && `${dotEnvBase}.${ENV_CONTEXT}`,
+      BUILD_TARGET && NODE_ENV && `${dotEnvBase}.${BUILD_TARGET}.${NODE_ENV}.local`,
+      BUILD_TARGET && NODE_ENV && `${dotEnvBase}.${BUILD_TARGET}.${NODE_ENV}`,
+      BUILD_TARGET && NODE_ENV !== 'test' && `${dotEnvBase}.${BUILD_TARGET}.local`,
+      BUILD_TARGET && `${dotEnvBase}.${BUILD_TARGET}`,
       NODE_ENV && `${dotEnvBase}.${NODE_ENV}.local`,
       NODE_ENV && `${dotEnvBase}.${NODE_ENV}`,
       NODE_ENV !== 'test' && `${dotEnvBase}.local`,

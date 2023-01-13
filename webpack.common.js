@@ -11,6 +11,7 @@ const Dotenv = require('dotenv-webpack');
 const path = require('path');
 
 const shouldGenReport = process.env.WEBPACK_REPORT === 'true';
+const NODE_ENV = process.env.NODE_ENV;
 
 module.exports = {
   entry: './src/index.tsx',
@@ -20,6 +21,7 @@ module.exports = {
   module: getLoaders(),
   plugins: getPlugins(),
   resolve: {
+    extensions: ['.ts', '.js', '.tsx', '.jsx', '.json'],
     fallback: {
       fs: false,
       os: false,
@@ -39,9 +41,25 @@ module.exports = {
  * Loaders used by the application.
  */
 function getLoaders() {
-  const babel = {
+  // const istanbulRule = {
+  //   test: /\.(js|jsx|ts|tsx)?$/,
+  //   loader: 'babel-loader',
+  // };
+  // const istanbulRule = {
+  //   test: /\.(js|jsx|ts|tsx)?$/,
+  //   exclude: /node_modules/,
+  //   use: ['@jsdevtools/coverage-istanbul-loader', 'ts-loader'],
+  // };
+
+  const tsRule = {
     test: /\.(js|jsx|ts|tsx)?$/,
-    loader: 'babel-loader',
+    exclude: /node_modules/,
+    use: {
+      loader: 'babel-loader',
+      options: {
+        presets: ['@babel/preset-env', '@babel/preset-react'],
+      },
+    },
   };
 
   const esbuild = {
@@ -51,7 +69,7 @@ function getLoaders() {
       loader: 'tsx',
       target: 'es2020',
     },
-    // use: 'ts-loader',
+    // use: ['@jsdevtools/coverage-istanbul-loader', 'ts-loader'],
     exclude: /node_modules/,
     resolve: {
       extensions: ['.ts', '.js', '.tsx', '.jsx', '.json'],
@@ -77,8 +95,9 @@ function getLoaders() {
   };
 
   const loaders = {
-    rules: [babel, esbuild, cssRule, svgRule, svgUrlRule],
+    rules: [esbuild, cssRule, svgRule, svgUrlRule],
   };
+  if (NODE_ENV !== 'production') loaders.rules.unshift(tsRule);
 
   return loaders;
 }
@@ -95,6 +114,11 @@ function getPlugins() {
   const analyzer = new BundleAnalyzerPlugin({
     analyzerMode: shouldGenReport ? 'server' : 'disabled',
   });
+
+  const reactPlugin = new webpack.ProvidePlugin({
+    React: 'react',
+  });
+
   const processPlugin = new webpack.ProvidePlugin({
     process: 'process/browser',
   });
@@ -103,5 +127,13 @@ function getPlugins() {
     path: dotenvFile(),
   });
 
-  return [tsChecker, htmlWebpack, miniCssExtract, analyzer, processPlugin, dotenvPlugin];
+  return [
+    tsChecker,
+    htmlWebpack,
+    miniCssExtract,
+    analyzer,
+    reactPlugin,
+    processPlugin,
+    dotenvPlugin,
+  ];
 }

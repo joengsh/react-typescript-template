@@ -4,11 +4,13 @@ module.exports = {
   testEnvironment: 'jsdom',
   roots: ['<rootDir>/src'],
   extensionsToTreatAsEsm: ['.ts', '.tsx'],
+  coverageProvider: 'v8',
   collectCoverageFrom: [
     'src/**/*.{js,jsx,ts,tsx}',
     '!src/**/*.d.ts',
     '!src/__test__/**/*',
     '!src/index.tsx',
+    '!**/*.stories.*',
   ],
   setupFilesAfterEnv: ['./config/jest/setupTests.ts'],
   snapshotResolver: '<rootDir>/config/jest/snapshotResolver.js',

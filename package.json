@@ -82,6 +82,10 @@
   },
   "scripts": {
     "start": "webpack serve --port 3000 --open --config webpack.dev.js",
+    "start:staging": "BUILD_TARGET=staging webpack serve --port 3000 --open --config webpack.dev.js",
+    "start:release": "BUILD_TARGET=release webpack serve --port 3000 --open --config webpack.dev.js",
+    "start:uat": "BUILD_TARGET=uat webpack serve --port 3000 --open --config webpack.dev.js",
+    "start:prod": "BUILD_TARGET=production webpack serve --port 3000 --open --config webpack.dev.js",
     "build": "NODE_ENV=production webpack --config webpack.prod.js",
     "preview": "npx serve dist",
     "report": "WEBPACK_REPORT=true webpack --profile --config webpack.prod.js --json > stats.json; webpack-bundle-analyzer ./stats.json",

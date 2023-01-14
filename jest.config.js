@@ -4,7 +4,7 @@ module.exports = {
   testEnvironment: 'jsdom',
   roots: ['<rootDir>/src'],
   extensionsToTreatAsEsm: ['.ts', '.tsx'],
-  coverageProvider: 'v8',
+  // coverageProvider: 'v8',
   collectCoverageFrom: [
     'src/**/*.{js,jsx,ts,tsx}',
     '!src/**/*.d.ts',

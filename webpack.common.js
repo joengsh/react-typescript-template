@@ -11,7 +11,7 @@ const Dotenv = require('dotenv-webpack');
 const path = require('path');
 
 const shouldGenReport = process.env.WEBPACK_REPORT === 'true';
-const NODE_ENV = process.env.NODE_ENV;
+// const NODE_ENV = process.env.NODE_ENV;
 
 module.exports = {
   entry: './src/index.tsx',
@@ -51,30 +51,28 @@ function getLoaders() {
   //   use: ['@jsdevtools/coverage-istanbul-loader', 'ts-loader'],
   // };
 
-  const tsRule = {
+  const babelRule = {
     test: /\.(js|jsx|ts|tsx)?$/,
     exclude: /node_modules/,
     use: {
       loader: 'babel-loader',
-      options: {
-        presets: ['@babel/preset-env', '@babel/preset-react'],
-      },
     },
   };
 
-  const esbuild = {
-    test: /\.(js|jsx|ts|tsx)?$/,
-    loader: 'esbuild-loader',
-    options: {
-      loader: 'tsx',
-      target: 'es2020',
-    },
-    // use: ['@jsdevtools/coverage-istanbul-loader', 'ts-loader'],
-    exclude: /node_modules/,
-    resolve: {
-      extensions: ['.ts', '.js', '.tsx', '.jsx', '.json'],
-    },
-  };
+  // // try to use esbuild to compile typescript, noted coverage reports may not be compatiable
+  // const tsRule = {
+  //   test: /\.(js|jsx|ts|tsx)?$/,
+  //   loader: 'esbuild-loader',
+  //   options: {
+  //     loader: 'tsx',
+  //     target: 'es2015',
+  //   },
+  //   // use: ['babel-loader', 'ts-loader'],
+  //   exclude: /node_modules/,
+  //   resolve: {
+  //     extensions: ['.ts', '.js', '.tsx', '.jsx', '.json'],
+  //   },
+  // };
 
   const cssRule = {
     test: /\.css$/,
@@ -95,9 +93,9 @@ function getLoaders() {
   };
 
   const loaders = {
-    rules: [esbuild, cssRule, svgRule, svgUrlRule],
+    rules: [babelRule, cssRule, svgRule, svgUrlRule],
   };
-  if (NODE_ENV !== 'production') loaders.rules.unshift(tsRule);
+  // if (NODE_ENV !== 'production') loaders.rules.unshift(babelRule);
 
   return loaders;
 }

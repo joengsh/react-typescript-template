@@ -66,6 +66,7 @@
     "postcss-loader": "^7.0.2",
     "prettier": "^2.7.1",
     "react-router-dom": "^6.6.2",
+    "shx": "^0.3.4",
     "source-map-loader": "^4.0.1",
     "start-server-and-test": "^1.15.2",
     "storybook-addon-turbo-build": "^1.1.0",
@@ -110,8 +111,8 @@
     "storybook": "start-storybook -p 6006",
     "build-storybook": "build-storybook",
     "test": "npm run jest && npm run cy:run-unit",
-    "coverage": "rm -rf coverage && npm run jest:coverage && npm run cy:run-unit && npm run coverage:merge && npm run coverage:merge-report",
-    "coverage:merge": "mkdir coverage/__temp__ && cp ./coverage/jest/coverage-final.json coverage/__temp__/jest.json && cp ./coverage/cypress/coverage-final.json coverage/__temp__/cypress.json && nyc merge coverage/__temp__ coverage/merged/coverage-final.json && rm -rf coverage/__temp__",
+    "coverage": "shx rm -rf coverage && npm run jest:coverage && npm run cy:run-unit && npm run coverage:merge && npm run coverage:merge-report",
+    "coverage:merge": "shx mkdir coverage/__temp__ && shx cp ./coverage/jest/coverage-final.json coverage/__temp__/jest.json && shx cp ./coverage/cypress/coverage-final.json coverage/__temp__/cypress.json && nyc merge coverage/__temp__ coverage/merged/coverage-final.json && shx rm -rf coverage/__temp__",
     "coverage:merge-report": "nyc report --reporter=lcov --reporter=text --temp-dir=./coverage/merged --report-dir=./coverage/merged"
   },
   "lint-staged": {

@@ -109,8 +109,8 @@
     "cy:e2e": "start-server-and-test start http-get://localhost:3000 cy:open-e2e",
     "storybook": "start-storybook -p 6006",
     "build-storybook": "build-storybook",
-    "test": "yarn jest && yarn cy:run-unit",
-    "coverage": "rm -rf coverage && yarn jest:coverage && yarn cy:run-unit && yarn coverage:merge && yarn coverage:merge-report",
+    "test": "npm run jest && npm run cy:run-unit",
+    "coverage": "rm -rf coverage && npm run jest:coverage && npm run cy:run-unit && npm run coverage:merge && npm run coverage:merge-report",
     "coverage:merge": "mkdir coverage/__temp__ && cp ./coverage/jest/coverage-final.json coverage/__temp__/jest.json && cp ./coverage/cypress/coverage-final.json coverage/__temp__/cypress.json && nyc merge coverage/__temp__ coverage/merged/coverage-final.json && rm -rf coverage/__temp__",
     "coverage:merge-report": "nyc report --reporter=lcov --reporter=text --temp-dir=./coverage/merged --report-dir=./coverage/merged"
   },

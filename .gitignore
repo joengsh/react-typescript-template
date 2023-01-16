@@ -17,6 +17,9 @@ coverage
 cypress/videos
 cypress/screenshots
 stats.json
+lib
+lib-esm
+_bundles
 
 # Editor directories and files
 .vscode/*

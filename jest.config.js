@@ -1,6 +1,6 @@
-/** @type {import('ts-jest').JestConfigWithTsJest} */
+// /** @type {import('ts-jest').JestConfigWithTsJest} */
 module.exports = {
-  preset: 'ts-jest',
+  // preset: 'ts-jest',
   testEnvironment: 'jsdom',
   roots: ['<rootDir>/src'],
   extensionsToTreatAsEsm: ['.ts', '.tsx'],
@@ -14,17 +14,18 @@ module.exports = {
   ],
   setupFilesAfterEnv: ['./config/jest/setupTests.ts'],
   snapshotResolver: '<rootDir>/config/jest/snapshotResolver.js',
-  // transform: {
-  //   '^.+\\.(t|j)sx?$': [
-  //     'esbuild-jest',
-  //     {
-  //       sourcemap: true,
-  //       loaders: {
-  //         '.spec.ts': 'tsx',
-  //       },
-  //     },
-  //   ],
-  // },
+  transform: {
+    '^.+\\.(t|j)sx?$': [
+      '@swc/jest',
+      {
+        jsc: {
+          experimental: {
+            plugins: [['swc-plugin-coverage-instrument', {}]],
+          },
+        },
+      },
+    ],
+  },
   moduleNameMapper: {
     '^@/(.*)$': '<rootDir>/src/$1',
     '^@components/(.*)$': '<rootDir>/src/components/$1',

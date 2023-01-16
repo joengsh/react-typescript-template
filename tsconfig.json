@@ -2,8 +2,8 @@
   "compilerOptions": {
     "esModuleInterop": true,
     "moduleResolution": "node",
-    "module": "commonjs",
-    "target": "es5",
+    "module": "CommonJS",
+    "target": "ES5",
     "lib": ["es2015", "dom"],
     "outDir": "lib",
     "strict": true,
@@ -22,6 +22,12 @@
     "typeRoots": ["./src/@types", "./node_modules/@types"],
     "types": ["node", "jest", "@testing-library/jest-dom"]
   },
-  "exclude": ["node_modules", "./cypress.config.ts"],
+  "exclude": [
+    "node_modules",
+    "./cypress.config.ts",
+    "./src/__test__/**/*",
+    "**/*.stories.*",
+    "**/*.test.*"
+  ],
   "include": ["src", "config/utils.js"]
 }

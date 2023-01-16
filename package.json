@@ -1,7 +1,9 @@
 {
   "name": "react-webpack-template",
   "version": "1.0.0",
-  "main": "index.js",
+  "main": "./lib/lib.js",
+  "module": "./lib-esm/lib.js",
+  "types": "./lib-esm/lib.d.ts",
   "author": "Joe Ng",
   "license": "MIT",
   "devDependencies": {
@@ -88,7 +90,8 @@
   },
   "scripts": {
     "start": "webpack serve --port 3000 --open --config webpack.dev.js",
-    "build": "npm run build:clean && tsc && tsc -m es6 --outDir lib-esm && webpack --module --config webpack.lib.js",
+    "build": "NODE_ENV=production webpack --config webpack.lib.js",
+    "build:bak": "npm run build:clean && tsc && tsc -m es6 --outDir lib-esm && webpack --config webpack.lib.js",
     "build:clean": "shx rm -rf _bundles lib lib-esm",
     "report": "WEBPACK_REPORT=true webpack --profile --config webpack.lib.js --json > stats.json; webpack-bundle-analyzer ./stats.json",
     "prepare": "husky install",

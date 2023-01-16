@@ -16,7 +16,6 @@ const shouldGenReport = process.env.WEBPACK_REPORT === 'true';
 module.exports = {
   entry: {
     'my-lib': './src/lib.tsx',
-    'my-lib.min': './src/lib.tsx',
   },
   output: {
     path: path.resolve(__dirname, '_bundles'),
@@ -24,6 +23,9 @@ module.exports = {
     libraryTarget: 'umd',
     library: 'MyLib',
     umdNamedDefine: true,
+  },
+  optimization: {
+    chunkIds: 'named',
   },
   module: getLoaders(),
   plugins: getPlugins(),
@@ -68,20 +70,38 @@ function getLoaders() {
     },
   };
 
-  // // try to use esbuild to compile typescript, noted coverage reports may not be compatiable
-  // const tsRule = {
-  //   test: /\.(js|jsx|ts|tsx)?$/,
-  //   loader: 'esbuild-loader',
-  //   options: {
-  //     loader: 'tsx',
-  //     target: 'es2015',
-  //   },
-  //   // use: ['babel-loader', 'ts-loader'],
-  //   exclude: /node_modules/,
-  //   resolve: {
-  //     extensions: ['.ts', '.js', '.tsx', '.jsx', '.json'],
-  //   },
-  // };
+  const swcRule = {
+    test: /\.(js|jsx)?$/,
+    exclude: /(node_modules)/,
+    use: {
+      loader: 'swc-loader',
+      options: {
+        jsc: {
+          experimental: {
+            plugins: [['swc-plugin-coverage-instrument', {}]],
+          },
+        },
+      },
+    },
+  };
+
+  const swcTsRule = {
+    test: /\.(ts|tsx)?$/,
+    exclude: /(node_modules)/,
+    use: {
+      loader: 'swc-loader',
+      options: {
+        jsc: {
+          parser: {
+            syntax: 'typescript',
+          },
+          experimental: {
+            plugins: [['swc-plugin-coverage-instrument', {}]],
+          },
+        },
+      },
+    },
+  };
 
   const cssRule = {
     test: /\.css$/,
@@ -102,9 +122,9 @@ function getLoaders() {
   };
 
   const loaders = {
-    rules: [babelRule, cssRule, svgRule, svgUrlRule],
+    // rules: [babelRule, cssRule, svgRule, svgUrlRule],
+    rules: [swcRule, swcTsRule, cssRule, svgRule, svgUrlRule],
   };
-  // if (NODE_ENV !== 'production') loaders.rules.unshift(babelRule);
 
   return loaders;
 }
@@ -134,11 +154,6 @@ function getPlugins() {
     path: dotenvFile(),
   });
 
-  const uglifyPlugin = new webpack.optimize.UglifyJsPlugin({
-    minimize: true,
-    sourceMap: true,
-    include: /\.min\.js$/,
-  });
   return [
     tsChecker,
     htmlWebpack,
@@ -147,6 +162,5 @@ function getPlugins() {
     reactPlugin,
     processPlugin,
     dotenvPlugin,
-    uglifyPlugin,
   ];
 }

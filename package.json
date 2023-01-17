@@ -1,9 +1,16 @@
 {
   "name": "react-webpack-template",
   "version": "1.0.0",
-  "main": "lib/lib.js",
-  "module": "lib-esm/lib.js",
-  "types": "lib/lib.d.ts",
+  "source": "src/lib.tsx",
+  "main": "dist/lib.js",
+  "umd:main": "dist/lib.umd.js",
+  "module": "dist/lib.mjs",
+  "exports": {
+    "types": "./dist/lib.d.ts",
+    "require": "./dist/lib.js",
+    "default": "./dist/lib.modern.mjs"
+  },
+  "types": "dist/lib.d.ts",
   "author": "Joe Ng",
   "license": "MIT",
   "devDependencies": {
@@ -64,6 +71,7 @@
     "jest-fetch-mock": "^3.0.3",
     "jsdom": "^21.0.0",
     "lint-staged": "^13.0.4",
+    "microbundle": "^0.15.1",
     "mini-css-extract-plugin": "^2.7.1",
     "path-browserify": "^1.0.1",
     "postcss": "^8.4.19",
@@ -90,8 +98,7 @@
   },
   "scripts": {
     "start": "webpack serve --port 3000 --open --config webpack.dev.js",
-    "build": "npm run build:clean && tsc && tsc -m es2020 --outDir lib-esm && webpack --config webpack.lib.js",
-    "build:clean": "shx rm -rf _bundles lib lib-esm",
+    "build": "shx rm -rf dist && microbundle",
     "report": "WEBPACK_REPORT=true webpack --profile --config webpack.lib.js --json > stats.json; webpack-bundle-analyzer ./stats.json",
     "prepare": "husky install",
     "lint-staged": "lint-staged",

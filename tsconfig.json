@@ -2,14 +2,16 @@
   "compilerOptions": {
     "esModuleInterop": true,
     "moduleResolution": "node",
-    "module": "CommonJS",
-    "target": "ES5",
-    "lib": ["es2015", "dom"],
+    "module": "ESNext",
+    "target": "ESNext",
+    "lib": ["ESNext", "dom"],
     "outDir": "lib",
     "strict": true,
     "sourceMap": true,
     "declaration": true,
     "jsx": "react-jsx",
+    "jsxFactory": "",
+    "jsxFragmentFactory": "",
     "baseUrl": "./",
     "paths": {
       "@/*": ["src/*"],
@@ -29,5 +31,5 @@
     "**/*.stories.*",
     "**/*.test.*"
   ],
-  "include": ["src", "config/utils.js"]
+  "include": ["src", "config/utils.js", "node_modules/microbundle/index.d.ts"]
 }

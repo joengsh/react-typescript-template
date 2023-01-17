@@ -111,7 +111,8 @@ function getLoaders() {
   };
 
   const loaders = {
-    rules: [swcRule, swcTsRule, cssRule, svgRule, svgUrlRule],
+    rules: [swcRule, swcTsRule, cssRule],
+    // rules: [swcRule, swcTsRule, cssRule, svgRule, svgUrlRule],
     // rules: [babelRule, cssRule, svgRule, svgUrlRule],
   };
 

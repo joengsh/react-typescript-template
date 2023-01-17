@@ -25,6 +25,8 @@ import '@cypress/code-coverage/support';
 // require('./commands')
 
 import { mount } from 'cypress/react18';
+const registerCypressGrep = require('@cypress/grep');
+registerCypressGrep();
 
 // Augment the Cypress namespace to include type definitions for
 // your custom command.

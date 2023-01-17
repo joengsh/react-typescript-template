@@ -1,10 +1,10 @@
 /* eslint-disable jest/valid-describe-callback */
-describe('Given I visit the main page', { tags: ['@smoke'] }, () => {
+describe('Given I visit the main page', () => {
   beforeEach(() => {
     cy.viewport(1280, 720);
     cy.visit('/');
   });
-  context('When I click on home tab', () => {
+  context('When I click on home tab', { tags: ['@smoke'] }, () => {
     beforeEach(() => {
       cy.get('[data-testid="nav-home"]').click();
     });

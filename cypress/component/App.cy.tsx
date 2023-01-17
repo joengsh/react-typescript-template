@@ -1,6 +1,6 @@
 import App from '@/App/App';
 
-describe('App', () => {
+describe('App', { tags: '@visual' }, () => {
   it('playground', () => {
     cy.viewport(1280, 720);
     cy.mount(<App />);

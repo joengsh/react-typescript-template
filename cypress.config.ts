@@ -21,12 +21,14 @@ export default defineConfig({
     },
     setupNodeEvents(on, config) {
       coverageTask(on, config);
+      require('@cypress/grep/src/plugin')(config);
       return config;
     },
   },
 
   e2e: {
     setupNodeEvents(on, config) {
+      coverageTask(on, config);
       config.baseUrl = process.env.CYPRESS_BASE_URL || 'http://localhost:3000';
       config.env.API_URL = process.env.CYPRESS_API_URL;
       config.env.API_TOKEN = process.env.CYPRESS_API_TOKEN;

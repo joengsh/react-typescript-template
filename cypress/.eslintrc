@@ -2,6 +2,8 @@
   "rules": {
     "jest/expect-expect": ["off"],
     "jest/valid-expect": ["off"],
-    "@typescript-eslint/no-unused-expressions": ["off"]
+    "@typescript-eslint/no-unused-expressions": ["off"],
+    "jest/valid-describe-callback": ["off"],
+    "@typescript-eslint/no-var-requires": ["off"]
   }
 }

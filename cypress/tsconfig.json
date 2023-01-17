@@ -1,5 +1,5 @@
 {
-  "include": ["../node_modules/cypress", "**/*.ts", "**/*.tsx", "support/index.js"],
+  "include": ["../node_modules/cypress", "**/*.ts", "**/*.tsx"],
   "compilerOptions": {
     "jsx": "react-jsx",
     "baseUrl": "../",

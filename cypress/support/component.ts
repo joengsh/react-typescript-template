@@ -25,8 +25,14 @@ import '@cypress/code-coverage/support';
 // require('./commands')
 
 import { mount } from 'cypress/react18';
+
+/* @ts-ignore */
+import { addMatchImageSnapshotCommand } from '@simonsmith/cypress-image-snapshot/command';
+
 const registerCypressGrep = require('@cypress/grep');
 registerCypressGrep();
+
+addMatchImageSnapshotCommand();
 
 // Augment the Cypress namespace to include type definitions for
 // your custom command.

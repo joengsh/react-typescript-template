@@ -4,6 +4,8 @@ import coverageTask from '@cypress/code-coverage/task';
 import webpackDev from './webpack.dev';
 const dotenvFile = require('./config/utils').dotenvFile;
 
+const { addMatchImageSnapshotPlugin } = require('@simonsmith/cypress-image-snapshot/plugin');
+
 require('dotenv').config({ path: dotenvFile() });
 
 export default defineConfig({
@@ -21,6 +23,7 @@ export default defineConfig({
     },
     setupNodeEvents(on, config) {
       coverageTask(on, config);
+      addMatchImageSnapshotPlugin(on, config);
       require('@cypress/grep/src/plugin')(config);
       return config;
     },

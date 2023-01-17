@@ -15,6 +15,7 @@
     "@joengsh/eslint-config-react": "^1.1.0",
     "@joengsh/prettier-config": "^1.0.2",
     "@mdx-js/react": "^2.2.1",
+    "@simonsmith/cypress-image-snapshot": "^6.0.0",
     "@storybook/addon-actions": "^6.5.15",
     "@storybook/addon-essentials": "^6.5.15",
     "@storybook/addon-interactions": "^6.5.15",
@@ -107,7 +108,10 @@
     "jest:coverage": "jest --coverage",
     "jest:coverage:watch": "jest --coverage --watch",
     "cy:open": "cypress open",
-    "cy:run-unit": "cypress run --component --browser chrome",
+    "cy:run-unit": "cypress run --component --browser chrome --env failOnSnapshotDiff=false",
+    "cy:run-unit:nonvisual": "cypress run --component --browser chrome --env grepTags=-@visual",
+    "cy:run-unit:visual": "cypress run --component --browser chrome --env grepTags=@visual",
+    "cy:run-unit:visual:update": "cypress run --component --browser chrome --env grepTags=@visual --env updateSnapshots=true",
     "cy:open-e2e": "cypress open --e2e --browser chrome",
     "cy:run-e2e": "cypress run --e2e --browser chrome",
     "cy:run-e2e:smoke": "cypress run --e2e --browser chrome --env grepTags=@smoke",
@@ -135,5 +139,10 @@
   "dependencies": {
     "react": "^18.2.0",
     "react-dom": "^18.2.0"
+  },
+  "overrides": {
+    "@simonsmith/cypress-image-snapshot": {
+      "cypress": "^12.3.0"
+    }
   }
 }

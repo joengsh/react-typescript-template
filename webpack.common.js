@@ -3,6 +3,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const ForkTsCheckerPlugin = require('fork-ts-checker-webpack-plugin');
 const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
+const CopyPlugin = require('copy-webpack-plugin');
 const webpack = require('webpack'); // only add this if you don't have yet
 const dotenvFile = require('./config/utils').dotenvFile;
 
@@ -122,8 +123,20 @@ function getLoaders() {
  * Plugins
  */
 function getPlugins() {
+  const copyPlugin = new CopyPlugin({
+    patterns: [
+      {
+        from: 'public/**/*',
+        globOptions: {
+          dot: true,
+          gitignore: true,
+          ignore: ['index.html'],
+        },
+      },
+    ],
+  });
   const htmlWebpack = new HtmlWebpackPlugin({
-    template: 'index.html',
+    template: 'public/index.html',
   });
   const miniCssExtract = new MiniCssExtractPlugin();
   const tsChecker = new ForkTsCheckerPlugin();
@@ -144,6 +157,7 @@ function getPlugins() {
   });
 
   return [
+    copyPlugin,
     tsChecker,
     htmlWebpack,
     miniCssExtract,

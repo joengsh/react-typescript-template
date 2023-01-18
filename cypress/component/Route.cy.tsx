@@ -12,8 +12,8 @@ describe('Given the main application router is shown', () => {
     beforeEach(() => {
       cy.get('[data-testid="nav-home"]').click();
     });
-    it('Then I should see the app page', () => {
-      cy.get('[data-testid="app"]').should('be.visible');
+    it('Then I should see the home page', () => {
+      cy.get('[data-testid="home"]').should('be.visible');
     });
   });
   context('When I click on page tab', () => {

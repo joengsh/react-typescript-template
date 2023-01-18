@@ -1,18 +1,18 @@
 import React from 'react';
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 
-import App from './App';
+import Home from './index';
 
 export default {
-  title: 'App',
-  component: App,
+  title: 'Home',
+  component: Home,
   parameters: {
     // More on Story layout: https://storybook.js.org/docs/react/configure/story-layout
     layout: 'fullscreen',
     snapshotTest: 'disable',
   },
-} as ComponentMeta<typeof App>;
+} as ComponentMeta<typeof Home>;
 
-const Template: ComponentStory<typeof App> = (args) => <App />;
+const Template: ComponentStory<typeof Home> = (args) => <Home />;
 
 export const Normal = Template.bind({});

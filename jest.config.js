@@ -12,7 +12,7 @@ module.exports = {
     '!src/index.tsx',
     '!**/*.stories.*',
   ],
-  setupFilesAfterEnv: ['./config/jest/setupTests.ts'],
+  setupFilesAfterEnv: ['./config/jest/setupTests.ts', 'jest-canvas-mock'],
   snapshotResolver: '<rootDir>/config/jest/snapshotResolver.js',
   transform: {
     '^.+\\.(t|j)sx?$': [

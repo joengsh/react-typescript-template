@@ -1,15 +1,11 @@
 import React from 'react';
-import { render, screen } from '@testing-library/react';
+import { render, screen, waitFor } from '@testing-library/react';
 import App from './App';
 
 describe('App', () => {
-  it('should work as expected', () => {
-    render(<App />);
-    expect(screen.queryByTestId('app')).toBeInTheDocument();
-  });
-
-  it('should match snapshot', () => {
+  it('should match snapshot', async () => {
     const { container } = render(<App />);
+    await waitFor(() => expect(screen.getByTestId('nav-home')).toBeInTheDocument());
     expect(container).toMatchSnapshot();
   });
 });

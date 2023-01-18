@@ -1,20 +1,28 @@
 import { Page } from '@/stories/Page';
 import React, { Suspense } from 'react';
-import { createRoutesFromElements, Route } from 'react-router-dom';
+import { createRoutesFromElements, Route, useLocation, useNavigate } from 'react-router-dom';
 import DummyLayout from '../Layout/Layout';
-// import App from '@/App/App';
-const App = React.lazy(() => import('@/App/App'));
-// const App = React.lazy(() => import('@/App/App').then((module) => ({ default: module.default })));
+// const Home = React.lazy(() =>
+//   import('@components/pages/Home').then((module) => {
+//     throw new Error('Lazy Failed');
+//     return { default: module.default };
+//   })
+// );
 
-const SuspenseLayout = () => (
-  <Suspense fallback={<div>Suspense Loading...</div>}>
-    <DummyLayout />
-  </Suspense>
+import { ErrorBoundary } from 'react-error-boundary';
+import ErrorFallback from '@/components/molecules/ErrorFallback';
+// import Home from '@components/pages/Home';
+const Home = React.lazy(() => import('@components/pages/Home'));
+
+const LayoutWithErrorFallback = ({ Layout }: any) => (
+  <ErrorBoundary FallbackComponent={ErrorFallback}>
+    <Layout />
+  </ErrorBoundary>
 );
 
 const routes = createRoutesFromElements(
-  <Route path="/" element={<SuspenseLayout />}>
-    <Route index element={<App />} />
+  <Route path="/" element={<LayoutWithErrorFallback Layout={DummyLayout} />}>
+    <Route index element={<Home />} />
     <Route path="page" element={<Page />} />
     <Route path="about" element={<div data-testid="about">About</div>} />
   </Route>

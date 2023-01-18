@@ -1,24 +1,15 @@
-import Footer from '@components/organisms/Footer/Footer';
-import Hero from '@components/organisms/Hero/Hero';
-import Carousel from '@components/molecules/Carousel/Carousel';
-import './App.css';
-import React from 'react';
-import Logo from '@assets/react.svg';
-import 'tw-elements';
+import React, { Suspense } from 'react';
+import { createBrowserRouter, RouterProvider } from 'react-router-dom';
+import routes from '@components/templates/Routes/Routes';
+
+const router = createBrowserRouter(routes);
 
 function App() {
   console.log(process.env.CYPRESS_BASE_URL);
   return (
-    <div className="App" data-testid="app">
-      <div>
-        <a href="https://reactjs.org" target="_blank" rel="noreferrer">
-          <Logo className="logo" width={96} height={96} />
-        </a>
-      </div>
-      <Hero />
-      <Carousel />
-      <Footer />
-    </div>
+    <Suspense fallback={<div>Suspense Loading...</div>}>
+      <RouterProvider router={router} />
+    </Suspense>
   );
 }
 

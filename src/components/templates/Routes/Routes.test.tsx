@@ -3,11 +3,11 @@ import routes from './Routes';
 import { createMemoryRouter, RouterProvider } from 'react-router-dom';
 const router = createMemoryRouter(routes);
 
-const App = () => {
-  return <div data-testid="app">App</div>;
+const Home = () => {
+  return <div data-testid="home">Home</div>;
 };
-jest.mock('@/App/App', () => {
-  return App;
+jest.mock('@components/pages/Home', () => {
+  return Home;
 });
 const Page = () => {
   return <div data-testid="page">Page</div>;
@@ -24,7 +24,7 @@ describe('Route', () => {
     // TODO: click app go app, click page go page, click about go about
     await waitFor(() => expect(screen.getByTestId('nav-home')).toBeInTheDocument());
     fireEvent.click(screen.getByTestId('nav-home'));
-    await waitFor(() => expect(screen.getByTestId('app')).toBeInTheDocument());
+    await waitFor(() => expect(screen.getByTestId('home')).toBeInTheDocument());
     fireEvent.click(screen.getByTestId('nav-page'));
     await waitFor(() => expect(screen.getByTestId('page')).toBeInTheDocument());
     fireEvent.click(screen.getByTestId('nav-about'));

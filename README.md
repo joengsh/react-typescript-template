@@ -84,6 +84,7 @@ Main difference is that atomic design focus on the UI component while atomic red
 - [React re-renders guide](https://www.developerway.com/posts/react-re-renders-guide)
 - [use-context-selector](https://dev.to/romaintrotard/use-context-selector-demystified-4f8e)
 - [Framer motion](https://www.framer.com/motion/)
+- [tailwind cheatsheet](https://nerdcave.com/tailwind-cheat-sheet)
 - [tailwindcss dashboard sample](https://tailwindcomponents.com/component/responsive-admin-template)
 - [tailwind components](https://dev.to/cruip/25-places-where-you-can-get-free-tailwind-css-components-47lm)
 - [hyperui](https://www.hyperui.dev/)

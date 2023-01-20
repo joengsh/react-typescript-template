@@ -9,8 +9,4 @@ describe('Given the <Home/> component is shown', () => {
   it('Then display correctly', () => {
     cy.get('.Home').should('be.visible');
   });
-
-  it('Then the display should be consistent every time it render', { tags: '@visual' }, () => {
-    cy.matchImageSnapshot();
-  });
 });

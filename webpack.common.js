@@ -42,16 +42,27 @@ module.exports = {
  * Loaders used by the application.
  */
 function getLoaders() {
-  // const istanbulRule = {
-  //   test: /\.(js|jsx|ts|tsx)?$/,
-  //   loader: 'babel-loader',
-  // };
-  // const istanbulRule = {
-  //   test: /\.(js|jsx|ts|tsx)?$/,
-  //   exclude: /node_modules/,
-  //   use: ['@jsdevtools/coverage-istanbul-loader', 'ts-loader'],
-  // };
-
+  const babelTsRule = {
+    test: /\.ts(x?)$/,
+    exclude: /node_modules/,
+    use: [
+      {
+        loader: 'babel-loader',
+      },
+      {
+        loader: 'ts-loader',
+      },
+    ],
+  };
+  const babelJsRule = {
+    test: /\.js$/,
+    exclude: /node_modules/,
+    use: [
+      {
+        loader: 'babel-loader',
+      },
+    ],
+  };
   const babelRule = {
     test: /\.(js|jsx|ts|tsx)?$/,
     exclude: /node_modules/,
@@ -112,8 +123,8 @@ function getLoaders() {
   };
 
   const loaders = {
-    rules: [swcRule, swcTsRule, cssRule, svgRule, svgUrlRule],
-    // rules: [babelRule, cssRule, svgRule, svgUrlRule],
+    // rules: [swcRule, swcTsRule, cssRule, svgRule, svgUrlRule],
+    rules: [babelJsRule, babelTsRule, cssRule, svgRule, svgUrlRule],
   };
 
   return loaders;

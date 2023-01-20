@@ -2,12 +2,12 @@
   "compilerOptions": {
     "esModuleInterop": true,
     "module": "commonjs",
+    "target": "ES6",
+    "jsx": "react-jsx",
     "moduleResolution": "node",
     "lib": ["dom", "ES6"],
     "strict": true,
     "sourceMap": true,
-    "target": "ES6",
-    "jsx": "react-jsx",
     "baseUrl": "./",
     "paths": {
       "@/*": ["src/*"],

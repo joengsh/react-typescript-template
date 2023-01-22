@@ -12,7 +12,7 @@ const Dotenv = require('dotenv-webpack');
 const path = require('path');
 
 const shouldGenReport = process.env.WEBPACK_REPORT === 'true';
-// const NODE_ENV = process.env.NODE_ENV;
+const NODE_ENV = process.env.NODE_ENV;
 
 module.exports = {
   entry: './src/index.tsx',
@@ -49,11 +49,13 @@ function getLoaders() {
       {
         loader: 'babel-loader',
       },
-      {
-        loader: 'ts-loader',
-      },
     ],
   };
+  if (NODE_ENV !== 'production') {
+    babelTsRule.use.push({
+      loader: 'ts-loader',
+    });
+  }
   const babelJsRule = {
     test: /\.js$/,
     exclude: /node_modules/,

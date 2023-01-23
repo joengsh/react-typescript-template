@@ -1,31 +1,31 @@
-/** @type {import('ts-jest').JestConfigWithTsJest} */
+// /** @type {import('ts-jest').JestConfigWithTsJest} */
 module.exports = {
-  preset: 'ts-jest',
+  // preset: 'ts-jest',
   testEnvironment: 'jsdom',
   roots: ['<rootDir>/src'],
   extensionsToTreatAsEsm: ['.ts', '.tsx'],
   // coverageProvider: 'v8',
+  // collectCoverage: true,
   collectCoverageFrom: [
     'src/**/*.{js,jsx,ts,tsx}',
     '!src/**/*.d.ts',
     '!src/__test__/**/*',
     '!src/index.tsx',
     '!**/*.stories.*',
+    '!**/*.test.*',
   ],
   setupFilesAfterEnv: ['./config/jest/setupTests.ts', 'jest-canvas-mock'],
   snapshotResolver: '<rootDir>/config/jest/snapshotResolver.js',
-  // transform: {
-  //   '^.+\\.(t|j)sx?$': [
-  //     '@swc/jest',
-  //     {
-  //       jsc: {
-  //         experimental: {
-  //           plugins: [['swc-plugin-coverage-instrument', {}]],
-  //         },
-  //       },
-  //     },
-  //   ],
-  // },
+  transform: {
+    '^.+\\.(t|j)sx?$': [
+      '@swc/jest',
+      {
+        experimental: {
+          customCoverageInstrumentation: { enabled: true },
+        },
+      },
+    ],
+  },
   moduleNameMapper: {
     '^@/(.*)$': '<rootDir>/src/$1',
     '^@components/(.*)$': '<rootDir>/src/components/$1',

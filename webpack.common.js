@@ -65,15 +65,8 @@ function getLoaders() {
       },
     ],
   };
-  const babelRule = {
-    test: /\.(js|jsx|ts|tsx)?$/,
-    exclude: /node_modules/,
-    use: {
-      loader: 'babel-loader',
-    },
-  };
 
-  const swcRule = {
+  const swcJsRule = {
     test: /\.(js|jsx)?$/,
     exclude: /(node_modules)/,
     use: {
@@ -125,8 +118,8 @@ function getLoaders() {
   };
 
   const loaders = {
-    // rules: [swcRule, swcTsRule, cssRule, svgRule, svgUrlRule],
-    rules: [babelJsRule, babelTsRule, cssRule, svgRule, svgUrlRule],
+    rules: [swcJsRule, swcTsRule, cssRule, svgRule, svgUrlRule],
+    // rules: [babelJsRule, babelTsRule, cssRule, svgRule, svgUrlRule],
   };
 
   return loaders;

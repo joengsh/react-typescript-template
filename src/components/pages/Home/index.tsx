@@ -4,6 +4,7 @@ import Carousel from '@components/molecules/Carousel/Carousel';
 import React from 'react';
 import Logo from '@assets/react.svg';
 import 'tw-elements';
+import Button from '@/components/atoms/Button';
 
 function Home() {
   return (
@@ -12,6 +13,7 @@ function Home() {
         <a href="https://reactjs.org" target="_blank" rel="noreferrer">
           <Logo className="logo" width={96} height={96} />
         </a>
+        <Button variant={'primary'}>Hello</Button>
       </div>
       <Hero />
       <Carousel />

@@ -1,7 +1,26 @@
+const babelConfig = {
+  presets: [
+    [
+      '@babel/preset-react',
+      {
+        runtime: 'automatic',
+      },
+    ],
+    '@babel/preset-typescript',
+  ],
+  plugins: [
+    'babel-plugin-twin',
+    'babel-plugin-macros',
+    'babel-plugin-styled-components',
+    '@babel/plugin-transform-modules-commonjs',
+    ['dynamic-import-node', { noInterop: true }],
+  ],
+};
+
 /** @type {import('ts-jest').JestConfigWithTsJest} */
 module.exports = {
   preset: 'ts-jest',
-  testEnvironment: 'jsdom',
+  testEnvironment: 'jest-environment-jsdom',
   roots: ['<rootDir>/src'],
   extensionsToTreatAsEsm: ['.ts', '.tsx'],
   // coverageProvider: 'v8',
@@ -12,8 +31,13 @@ module.exports = {
     '!src/index.tsx',
     '!**/*.stories.*',
   ],
-  setupFilesAfterEnv: ['./config/jest/setupTests.ts', 'jest-canvas-mock'],
+  setupFilesAfterEnv: ['<rootDir>/config/jest/setupTests.js', 'jest-canvas-mock'],
   snapshotResolver: '<rootDir>/config/jest/snapshotResolver.js',
+  transform: {
+    // '^.+\\.[tj]sx?$' to process js/ts with `ts-jest`
+    // '^.+\\.m?[tj]sx?$' to process js/ts/mjs/mts with `ts-jest`
+    '^.+\\.(t|j)sx?$': ['babel-jest', babelConfig],
+  },
   // transform: {
   //   '^.+\\.(t|j)sx?$': [
   //     '@swc/jest',

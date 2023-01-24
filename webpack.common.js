@@ -26,7 +26,11 @@ module.exports = {
     fallback: {
       fs: false,
       os: false,
+      stream: require.resolve('stream'),
+      module: require.resolve('module'),
       path: 'path-browserify',
+      crypto: require.resolve('crypto-browserify'),
+      'process/browser': require.resolve('process/browser'),
     },
     alias: {
       '@': path.resolve(__dirname, 'src/'),
@@ -42,35 +46,49 @@ module.exports = {
  * Loaders used by the application.
  */
 function getLoaders() {
+  const babelConfig = {
+    presets: [
+      [
+        '@babel/preset-react',
+        {
+          runtime: 'automatic',
+        },
+      ],
+      '@babel/preset-typescript',
+    ],
+    plugins: [
+      'istanbul',
+      'babel-plugin-twin',
+      'babel-plugin-macros',
+      'babel-plugin-styled-components',
+      '@babel/plugin-transform-modules-commonjs',
+    ],
+  };
+
   const babelTsRule = {
     test: /\.ts(x?)$/,
     exclude: /node_modules/,
     use: [
       {
         loader: 'babel-loader',
+        options: babelConfig,
       },
     ],
   };
-  if (NODE_ENV !== 'production') {
-    babelTsRule.use.push({
-      loader: 'ts-loader',
-    });
-  }
+  // if (NODE_ENV !== 'production') {
+  //   babelTsRule.use.push({
+  //     loader: 'ts-loader',
+  //   });
+  // }
   const babelJsRule = {
     test: /\.js$/,
     exclude: /node_modules/,
     use: [
       {
         loader: 'babel-loader',
+        options: babelConfig,
       },
     ],
-  };
-  const babelRule = {
-    test: /\.(js|jsx|ts|tsx)?$/,
-    exclude: /node_modules/,
-    use: {
-      loader: 'babel-loader',
-    },
   };
 
   const swcRule = {

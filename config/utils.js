@@ -1,5 +1,6 @@
 /* eslint-disable @typescript-eslint/no-var-requires */
 const fs = require('fs');
+const path = require('path');
 module.exports = {
   dotenvFile: () => {
     const BUILD_TARGET = process.env.BUILD_TARGET;
@@ -16,6 +17,7 @@ module.exports = {
       NODE_ENV !== 'test' && `${dotEnvBase}.local`,
       dotEnvBase,
     ]
+      .map((p) => (p ? path.resolve('config/env/', p) : p))
       .filter(Boolean)
       .filter((path) => fs.existsSync(path));
 

@@ -55,13 +55,18 @@ function getLoaders() {
         },
       ],
       '@babel/preset-typescript',
+      [
+        '@babel/preset-env',
+        {
+          modules: false,
+        },
+      ],
     ],
     plugins: [
       'istanbul',
       'babel-plugin-twin',
       'babel-plugin-macros',
       'babel-plugin-styled-components',
-      '@babel/plugin-transform-modules-commonjs',
     ],
   };
 

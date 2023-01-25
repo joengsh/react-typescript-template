@@ -1,5 +1,6 @@
 {
   "name": "react-webpack-template",
+  "sideEffect": false,
   "version": "1.0.0",
   "main": "index.js",
   "author": "Joe Ng",

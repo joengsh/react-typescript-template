@@ -6,7 +6,13 @@
         "runtime": "automatic"
       }
     ],
-    "@babel/preset-typescript"
+    "@babel/preset-typescript",
+    [
+      "@babel/preset-env",
+      {
+        "modules": false
+      }
+    ]
   ],
   "plugins": ["babel-plugin-twin", "babel-plugin-macros", "babel-plugin-styled-components"]
 }

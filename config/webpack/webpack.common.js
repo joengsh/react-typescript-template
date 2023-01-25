@@ -5,7 +5,7 @@ const ForkTsCheckerPlugin = require('fork-ts-checker-webpack-plugin');
 const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 const CopyPlugin = require('copy-webpack-plugin');
 const webpack = require('webpack'); // only add this if you don't have yet
-const dotenvFile = require('./config/utils').dotenvFile;
+const dotenvFile = require('../../config/utils').dotenvFile;
 
 // replace accordingly './.env' with the path of your .env file
 const Dotenv = require('dotenv-webpack');
@@ -15,9 +15,9 @@ const shouldGenReport = process.env.WEBPACK_REPORT === 'true';
 const NODE_ENV = process.env.NODE_ENV;
 
 module.exports = {
-  entry: './src/index.tsx',
+  entry: process.cwd() + '/src/index.tsx',
   output: {
-    path: __dirname + '/dist/',
+    path: process.cwd() + '/dist/',
   },
   module: getLoaders(),
   plugins: getPlugins(),
@@ -33,10 +33,10 @@ module.exports = {
       'process/browser': require.resolve('process/browser'),
     },
     alias: {
-      '@': path.resolve(__dirname, 'src/'),
-      '@components': path.resolve(__dirname, 'src/components'),
-      '@assets': path.resolve(__dirname, 'src/assets'),
-      '@utils': path.resolve(__dirname, 'src/utils'),
+      '@': path.resolve(process.cwd(), '/src/'),
+      '@components': path.resolve(process.cwd(), '/src/components'),
+      '@assets': path.resolve(process.cwd(), '/src/assets'),
+      '@utils': path.resolve(process.cwd(), '/src/utils'),
       process: 'process/browser',
     },
   },
@@ -172,7 +172,7 @@ function getPlugins() {
     ],
   });
   const htmlWebpack = new HtmlWebpackPlugin({
-    template: 'public/index.html',
+    template: path.resolve(process.cwd(), '/public/index.html'),
   });
   const miniCssExtract = new MiniCssExtractPlugin();
   const tsChecker = new ForkTsCheckerPlugin();

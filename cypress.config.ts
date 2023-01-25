@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/no-var-requires */
 import { defineConfig } from 'cypress';
 import coverageTask from '@cypress/code-coverage/task';
-import webpackDev from './webpack.dev';
+import webpackDev from './config/webpack/webpack.dev';
 const dotenvFile = require('./config/utils').dotenvFile;
 
 const { addMatchImageSnapshotPlugin } = require('@simonsmith/cypress-image-snapshot/plugin');

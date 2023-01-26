@@ -19,7 +19,7 @@ exports[`Given the <Home/> component And the component should match snapshot 1`]
         />
       </a>
       <button
-        class="Button-sc-1h4oywu-0 gjFXEN"
+        class="css-6gx7wc-Button-Button e14z4ts30"
       >
         Hello
       </button>

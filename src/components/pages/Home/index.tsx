@@ -3,8 +3,7 @@ import Hero from '@components/organisms/Hero/Hero';
 import Carousel from '@components/molecules/Carousel/Carousel';
 import React from 'react';
 import Logo from '@assets/react.svg';
-import 'tw-elements';
-import Button from '@/components/atoms/Button';
+import Button from '@/components/ui/Button';
 
 function Home() {
   return (

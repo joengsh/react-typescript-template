@@ -10,15 +10,17 @@ const babelConfig = {
     [
       '@babel/preset-env',
       {
-        modules: false,
+        targets: {
+          node: 'current',
+        },
       },
     ],
+    '@emotion/babel-preset-css-prop',
   ],
   plugins: [
     'babel-plugin-twin',
     'babel-plugin-macros',
-    'babel-plugin-styled-components',
-    '@babel/plugin-transform-modules-commonjs',
+    // '@babel/plugin-transform-modules-commonjs',
     ['dynamic-import-node', { noInterop: true }],
   ],
 };

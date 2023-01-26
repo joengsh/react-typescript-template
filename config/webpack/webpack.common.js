@@ -54,6 +54,7 @@ function getLoaders() {
           runtime: 'automatic',
         },
       ],
+      '@emotion/babel-preset-css-prop',
       '@babel/preset-typescript',
       [
         '@babel/preset-env',
@@ -66,7 +67,7 @@ function getLoaders() {
       'istanbul',
       'babel-plugin-twin',
       'babel-plugin-macros',
-      'babel-plugin-styled-components',
+      // 'babel-plugin-styled-components',
     ],
   };
 

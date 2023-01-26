@@ -1,4 +1,4 @@
-import Button from '@components/atoms/Button';
+import Button from '@components/ui/Button';
 
 describe('Given the components', { tags: '@visual' }, () => {
   beforeEach(() => {

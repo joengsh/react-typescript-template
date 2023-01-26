@@ -15,6 +15,7 @@
     "jsx": "react-jsx",
     "incremental": true,
     "sourceMap": true,
+    "jsxImportSource": "@emotion/react", // Add the css prop
     "baseUrl": "./",
     "paths": {
       "@/*": ["src/*"],

@@ -11,7 +11,7 @@ const Home = () => {
   return <div data-testid="home">Home</div>;
 };
 jest.mock('@components/pages/Home', () => {
-  return { default: Home };
+  return Home;
 });
 const Page = () => {
   return <div data-testid="page">Page</div>;

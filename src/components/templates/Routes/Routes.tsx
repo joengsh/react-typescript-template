@@ -10,7 +10,7 @@ import DummyLayout from '../Layout/Layout';
 // );
 
 import { ErrorBoundary } from 'react-error-boundary';
-import ErrorFallback from '@/components/molecules/ErrorFallback';
+import ErrorFallback from '@/components/ui/ErrorFallback';
 // import Home from '@components/pages/Home';
 const Home = React.lazy(() => import('@components/pages/Home'));
 

@@ -18,7 +18,6 @@
 import './commands';
 
 import '../../src/index.css';
-import 'tw-elements';
 import '@cypress/code-coverage/support';
 
 // Alternatively you can use CommonJS syntax:

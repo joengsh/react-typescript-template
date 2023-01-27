@@ -1,7 +1,7 @@
 import { Page } from '@/stories/Page';
 import React, { Suspense } from 'react';
 import { createRoutesFromElements, Route, useLocation, useNavigate } from 'react-router-dom';
-import DummyLayout from '../Layout/Layout';
+import DummyLayout from '@pages/Layout/Layout';
 // const Home = React.lazy(() =>
 //   import('@components/pages/Home').then((module) => {
 //     throw new Error('Lazy Failed');
@@ -10,9 +10,9 @@ import DummyLayout from '../Layout/Layout';
 // );
 
 import { ErrorBoundary } from 'react-error-boundary';
-import ErrorFallback from '@/components/ui/ErrorFallback';
+import ErrorFallback from '@components/ErrorFallback';
 // import Home from '@components/pages/Home';
-const Home = React.lazy(() => import('@components/pages/Home'));
+const Home = React.lazy(() => import('@pages/Home'));
 
 const LayoutWithErrorFallback = ({ Layout }: any) => (
   <ErrorBoundary FallbackComponent={ErrorFallback}>

@@ -52,7 +52,7 @@ exports[`App should match snapshot 1`] = `
             />
           </a>
           <button
-            class="css-6gx7wc-Button-Button e14z4ts30"
+            class="css-6gx7wc-Button-Button e2fgoot0"
           >
             Hello
           </button>

@@ -21,6 +21,8 @@
       "@/*": ["src/*"],
       "@assets/*": ["src/assets/*"],
       "@components/*": ["src/components/*"],
+      "@pages/*": ["src/pages/*"],
+      "@api/*": ["src/api/*"],
       "@utils/*": ["src/utils/*"],
       "@common/*": ["../fe-design-system-ts/src/*"],
       "@connection/*": ["../fe-connection-ts/src/*"]

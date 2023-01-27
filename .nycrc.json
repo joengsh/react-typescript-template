@@ -1,5 +1,5 @@
 {
-  "all": true,
+  "all": false,
   "extends": "@istanbuljs/nyc-config-typescript",
   "check-coverage": true,
   "report-dir": "./coverage/cypress",

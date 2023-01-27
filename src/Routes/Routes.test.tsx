@@ -10,7 +10,7 @@ const router = createMemoryRouter(routes, {
 const Home = () => {
   return <div data-testid="home">Home</div>;
 };
-jest.mock('@components/pages/Home', () => {
+jest.mock('@pages/Home', () => {
   return Home;
 });
 const Page = () => {

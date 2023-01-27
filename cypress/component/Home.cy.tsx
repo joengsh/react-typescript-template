@@ -1,4 +1,4 @@
-import Home from '@components/pages/Home';
+import Home from '@pages/Home';
 
 describe('Given the <Home/> component is shown', () => {
   beforeEach(() => {

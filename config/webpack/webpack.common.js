@@ -35,6 +35,8 @@ module.exports = {
     alias: {
       '@': path.resolve(process.cwd(), '/src/'),
       '@components': path.resolve(process.cwd(), '/src/components'),
+      '@pages': path.resolve(process.cwd(), '/src/pages'),
+      '@api': path.resolve(process.cwd(), '/src/api'),
       '@assets': path.resolve(process.cwd(), '/src/assets'),
       '@utils': path.resolve(process.cwd(), '/src/utils'),
       process: 'process/browser',

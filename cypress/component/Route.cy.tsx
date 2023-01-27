@@ -1,4 +1,4 @@
-import routes from '@components/templates/Routes/Routes';
+import routes from '@/Routes/Routes';
 import { createMemoryRouter, RouterProvider } from 'react-router-dom';
 
 const router = createMemoryRouter(routes);

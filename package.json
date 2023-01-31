@@ -116,7 +116,7 @@
     "lint-fix": "eslint --fix . --ext .js,.jsx,.ts,.tsx",
     "jest": "jest",
     "jest:changed": "jest --onlyChanged",
-    "jest:staged": "jest --env=jsdom --findRelatedTests --passWithNoTests",
+    "jest:staged": "jest --findRelatedTests --passWithNoTests",
     "jest:watch": "jest --watch",
     "jest:coverage": "jest --coverage",
     "jest:coverage:watch": "jest --coverage --watch",
@@ -152,10 +152,13 @@
   "dependencies": {
     "@emotion/react": "^11.10.5",
     "@emotion/styled": "^11.10.5",
+    "@mui/icons-material": "^5.11.0",
     "@mui/material": "^5.11.6",
+    "formik": "^2.2.9",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "react-error-boundary": "^3.1.4"
+    "react-error-boundary": "^3.1.4",
+    "yup": "^0.32.11"
   },
   "overrides": {
     "@simonsmith/cypress-image-snapshot": {

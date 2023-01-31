@@ -188,134 +188,174 @@ exports[`App should match snapshot 1`] = `
             </div>
           </div>
         </header>
-        <div
-          class="carousel slide relative"
-          data-bs-ride="carousel"
-          id="carouselExampleCaptions"
-        >
-          <div
-            class="carousel-indicators absolute right-0 bottom-0 left-0 flex justify-center p-0 mb-4"
-          >
-            <button
-              aria-current="true"
-              aria-label="Slide 1"
-              class="active"
-              data-bs-slide-to="0"
-              data-bs-target="#carouselExampleCaptions"
-              type="button"
-            />
-            <button
-              aria-label="Slide 2"
-              data-bs-slide-to="1"
-              data-bs-target="#carouselExampleCaptions"
-              type="button"
-            />
-            <button
-              aria-label="Slide 3"
-              data-bs-slide-to="2"
-              data-bs-target="#carouselExampleCaptions"
-              type="button"
-            />
-          </div>
-          <div
-            class="carousel-inner relative w-full overflow-hidden"
+        <div>
+          <form
+            class="css-rcf68v-formStyle-FormStep1"
           >
             <div
-              class="carousel-item active relative float-left w-full"
+              class="css-hrok19-FormStep1"
             >
-              <img
-                alt="..."
-                class="block w-full"
-                src="https://mdbootstrap.com/img/Photos/Slides/img%20(15).jpg"
-              />
               <div
-                class="carousel-caption hidden md:block absolute text-center"
+                class="MuiFormControl-root MuiTextField-root css-1u3bzj6-MuiFormControl-root-MuiTextField-root"
               >
-                <h5
-                  class="text-xl"
+                <label
+                  class="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-outlined MuiFormLabel-colorPrimary MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-outlined css-14s5rfu-MuiFormLabel-root-MuiInputLabel-root"
+                  data-shrink="false"
+                  for="firstname"
+                  id="firstname-label"
                 >
-                  First slide label
-                </h5>
-                <p>
-                  Some representative placeholder content for the first slide.
+                  First Name
+                </label>
+                <div
+                  class="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-colorPrimary MuiInputBase-formControl css-9ddj71-MuiInputBase-root-MuiOutlinedInput-root"
+                >
+                  <input
+                    aria-describedby="firstname-helper-text"
+                    aria-invalid="false"
+                    class="MuiInputBase-input MuiOutlinedInput-input css-1t8l2tu-MuiInputBase-input-MuiOutlinedInput-input"
+                    id="firstname"
+                    name="firstname"
+                    type="text"
+                    value=""
+                  />
+                  <fieldset
+                    aria-hidden="true"
+                    class="MuiOutlinedInput-notchedOutline css-1d3z3hw-MuiOutlinedInput-notchedOutline"
+                  >
+                    <legend
+                      class="css-yjsfm1"
+                    >
+                      <span>
+                        First Name
+                      </span>
+                    </legend>
+                  </fieldset>
+                </div>
+                <p
+                  class="MuiFormHelperText-root MuiFormHelperText-sizeMedium MuiFormHelperText-contained css-1wc848c-MuiFormHelperText-root"
+                  id="firstname-helper-text"
+                >
+                  <span
+                    class="notranslate"
+                  >
+                    ​
+                  </span>
+                </p>
+              </div>
+              <div
+                class="MuiFormControl-root MuiTextField-root css-1u3bzj6-MuiFormControl-root-MuiTextField-root"
+              >
+                <label
+                  class="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-outlined MuiFormLabel-colorPrimary MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-outlined css-14s5rfu-MuiFormLabel-root-MuiInputLabel-root"
+                  data-shrink="false"
+                  for="surname"
+                  id="surname-label"
+                >
+                  Surname
+                </label>
+                <div
+                  class="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-colorPrimary MuiInputBase-formControl css-9ddj71-MuiInputBase-root-MuiOutlinedInput-root"
+                >
+                  <input
+                    aria-describedby="surname-helper-text"
+                    aria-invalid="false"
+                    class="MuiInputBase-input MuiOutlinedInput-input css-1t8l2tu-MuiInputBase-input-MuiOutlinedInput-input"
+                    id="surname"
+                    name="surname"
+                    type="text"
+                    value=""
+                  />
+                  <fieldset
+                    aria-hidden="true"
+                    class="MuiOutlinedInput-notchedOutline css-1d3z3hw-MuiOutlinedInput-notchedOutline"
+                  >
+                    <legend
+                      class="css-yjsfm1"
+                    >
+                      <span>
+                        Surname
+                      </span>
+                    </legend>
+                  </fieldset>
+                </div>
+                <p
+                  class="MuiFormHelperText-root MuiFormHelperText-sizeMedium MuiFormHelperText-contained css-1wc848c-MuiFormHelperText-root"
+                  id="surname-helper-text"
+                >
+                  <span
+                    class="notranslate"
+                  >
+                    ​
+                  </span>
                 </p>
               </div>
             </div>
             <div
-              class="carousel-item relative float-left w-full"
+              class="css-hrok19-FormStep1"
             >
-              <img
-                alt="..."
-                class="block w-full"
-                src="https://mdbootstrap.com/img/Photos/Slides/img%20(22).jpg"
-              />
               <div
-                class="carousel-caption hidden md:block absolute text-center"
+                class="MuiFormControl-root MuiFormControl-fullWidth MuiTextField-root css-wb57ya-MuiFormControl-root-MuiTextField-root"
               >
-                <h5
-                  class="text-xl"
+                <label
+                  class="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-outlined MuiFormLabel-colorPrimary MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-outlined css-14s5rfu-MuiFormLabel-root-MuiInputLabel-root"
+                  data-shrink="false"
+                  for="email"
+                  id="email-label"
                 >
-                  Second slide label
-                </h5>
-                <p>
-                  Some representative placeholder content for the second slide.
+                  Email
+                </label>
+                <div
+                  class="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-colorPrimary MuiInputBase-fullWidth MuiInputBase-formControl css-md26zr-MuiInputBase-root-MuiOutlinedInput-root"
+                >
+                  <input
+                    aria-describedby="email-helper-text"
+                    aria-invalid="false"
+                    class="MuiInputBase-input MuiOutlinedInput-input css-1t8l2tu-MuiInputBase-input-MuiOutlinedInput-input"
+                    id="email"
+                    name="email"
+                    type="text"
+                    value=""
+                  />
+                  <fieldset
+                    aria-hidden="true"
+                    class="MuiOutlinedInput-notchedOutline css-1d3z3hw-MuiOutlinedInput-notchedOutline"
+                  >
+                    <legend
+                      class="css-yjsfm1"
+                    >
+                      <span>
+                        Email
+                      </span>
+                    </legend>
+                  </fieldset>
+                </div>
+                <p
+                  class="MuiFormHelperText-root MuiFormHelperText-sizeMedium MuiFormHelperText-contained css-1wc848c-MuiFormHelperText-root"
+                  id="email-helper-text"
+                >
+                  <span
+                    class="notranslate"
+                  >
+                    ​
+                  </span>
                 </p>
               </div>
             </div>
             <div
-              class="carousel-item relative float-left w-full"
+              class="css-188ddig-FormStep1"
             >
-              <img
-                alt="..."
-                class="block w-full"
-                src="https://mdbootstrap.com/img/Photos/Slides/img%20(23).jpg"
-              />
-              <div
-                class="carousel-caption hidden md:block absolute text-center"
+              <button
+                class="MuiButtonBase-root MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeMedium MuiButton-containedSizeMedium MuiButton-fullWidth MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeMedium MuiButton-containedSizeMedium MuiButton-fullWidth css-1fu7jd5-MuiButtonBase-root-MuiButton-root"
+                tabindex="0"
+                type="submit"
               >
-                <h5
-                  class="text-xl"
-                >
-                  Third slide label
-                </h5>
-                <p>
-                  Some representative placeholder content for the third slide.
-                </p>
-              </div>
+                Submit
+              </button>
             </div>
-          </div>
-          <button
-            class="carousel-control-prev absolute top-0 bottom-0 flex items-center justify-center p-0 text-center border-0 hover:outline-none hover:no-underline focus:outline-none focus:no-underline left-0"
-            data-bs-slide="prev"
-            data-bs-target="#carouselExampleCaptions"
-            type="button"
-          >
-            <span
-              aria-hidden="true"
-              class="carousel-control-prev-icon inline-block bg-no-repeat"
-            />
-            <span
-              class="visually-hidden"
-            >
-              Previous
-            </span>
-          </button>
-          <button
-            class="carousel-control-next absolute top-0 bottom-0 flex items-center justify-center p-0 text-center border-0 hover:outline-none hover:no-underline focus:outline-none focus:no-underline right-0"
-            data-bs-slide="next"
-            data-bs-target="#carouselExampleCaptions"
-            type="button"
-          >
-            <span
-              aria-hidden="true"
-              class="carousel-control-next-icon inline-block bg-no-repeat"
-            />
-            <span
-              class="visually-hidden"
-            >
-              Next
-            </span>
-          </button>
+          </form>
+        </div>
+        <div>
+          {}
         </div>
         <footer
           class="text-center bg-gray-900 text-white"

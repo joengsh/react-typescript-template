@@ -1,4 +1,5 @@
 const path = require('path');
+const fs = require('fs');
 
 module.exports = {
   stories: ['../src/**/*.stories.mdx', '../src/**/*.stories.@(js|jsx|ts|tsx)'],
@@ -6,7 +7,7 @@ module.exports = {
     '@storybook/addon-links',
     '@storybook/addon-essentials',
     '@storybook/addon-interactions',
-    'storybook-addon-turbo-build',
+    // 'storybook-addon-turbo-build',
     {
       name: '@storybook/addon-postcss',
       options: {
@@ -30,6 +31,11 @@ module.exports = {
   core: {
     builder: '@storybook/builder-webpack5',
   },
+  babel: async (options) => {
+    options.plugins.unshift('babel-plugin-twin');
+    options.presets.push('@emotion/babel-preset-css-prop');
+    return options;
+  },
   webpackFinal: async (config, other) => {
     config.resolve.alias = {
       '@': path.resolve(__dirname, '../', 'src'),
@@ -38,6 +44,8 @@ module.exports = {
       '@api': path.resolve(__dirname, '../', 'src/api'),
       '@assets': path.resolve(__dirname, '../', 'src/assets'),
       '@utils': path.resolve(__dirname, '../', 'src/utils'),
+      '@emotion/core': getPackageDir('@emotion/react'),
+      '@emotion/styled': getPackageDir('@emotion/styled'),
     };
     const fileLoaderRule = config.module.rules.find((rule) => rule.test && rule.test.test('.svg'));
     fileLoaderRule.exclude = /\.svg$/;
@@ -60,3 +68,20 @@ module.exports = {
     return config;
   },
 };
+
+// Fix for package resolution
+function getPackageDir(filepath) {
+  let currDir = path.dirname(require.resolve(filepath));
+  while (true) {
+    if (fs.existsSync(path.join(currDir, 'package.json'))) {
+      return currDir;
+    }
+    const { dir, root } = path.parse(currDir);
+    if (dir === root) {
+      throw new Error(
+        `Could not find package.json in the parent directories starting from ${filepath}.`
+      );
+    }
+    currDir = dir;
+  }
+}

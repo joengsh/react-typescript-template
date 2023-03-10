@@ -5,19 +5,19 @@ const ForkTsCheckerPlugin = require('fork-ts-checker-webpack-plugin');
 const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 const CopyPlugin = require('copy-webpack-plugin');
 const webpack = require('webpack'); // only add this if you don't have yet
-const dotenvFile = require('./config/utils').dotenvFile;
+const dotenvFile = require('../utils').dotenvFile;
+const cwd = process.cwd();
 
 // replace accordingly './.env' with the path of your .env file
 const Dotenv = require('dotenv-webpack');
 const path = require('path');
 
 const shouldGenReport = process.env.WEBPACK_REPORT === 'true';
-// const NODE_ENV = process.env.NODE_ENV;
 
 module.exports = {
   entry: './src/index.tsx',
   output: {
-    path: __dirname + '/dist/',
+    path: cwd + '/dist/',
   },
   module: getLoaders(),
   plugins: getPlugins(),
@@ -29,10 +29,10 @@ module.exports = {
       path: 'path-browserify',
     },
     alias: {
-      '@': path.resolve(__dirname, 'src/'),
-      '@components': path.resolve(__dirname, 'src/components'),
-      '@assets': path.resolve(__dirname, 'src/assets'),
-      '@utils': path.resolve(__dirname, 'src/utils'),
+      '@': path.join(cwd, 'src/'),
+      '@components': path.join(cwd, 'src/components'),
+      '@assets': path.join(cwd, 'src/assets'),
+      '@utils': path.join(cwd, 'src/utils'),
       process: 'process/browser',
     },
   },
@@ -42,16 +42,6 @@ module.exports = {
  * Loaders used by the application.
  */
 function getLoaders() {
-  // const istanbulRule = {
-  //   test: /\.(js|jsx|ts|tsx)?$/,
-  //   loader: 'babel-loader',
-  // };
-  // const istanbulRule = {
-  //   test: /\.(js|jsx|ts|tsx)?$/,
-  //   exclude: /node_modules/,
-  //   use: ['@jsdevtools/coverage-istanbul-loader', 'ts-loader'],
-  // };
-
   const babelRule = {
     test: /\.(js|jsx|ts|tsx)?$/,
     exclude: /node_modules/,
@@ -95,7 +85,18 @@ function getLoaders() {
 
   const cssRule = {
     test: /\.css$/,
-    use: [MiniCssExtractPlugin.loader, 'css-loader', 'postcss-loader'],
+    use: [
+      MiniCssExtractPlugin.loader,
+      'css-loader',
+      {
+        loader: 'postcss-loader',
+        options: {
+          postcssOptions: {
+            config: path.join(cwd, 'config/postcss.config.js'),
+          },
+        },
+      },
+    ],
   };
 
   const svgRule = {
@@ -126,11 +127,11 @@ function getPlugins() {
   const copyPlugin = new CopyPlugin({
     patterns: [
       {
-        from: 'public/**/*',
+        from: 'public/',
         globOptions: {
           dot: true,
           gitignore: true,
-          ignore: ['index.html'],
+          ignore: ['**/index.html'],
         },
       },
     ],
@@ -158,7 +159,7 @@ function getPlugins() {
 
   return [
     copyPlugin,
-    tsChecker,
+    // tsChecker,
     htmlWebpack,
     miniCssExtract,
     analyzer,

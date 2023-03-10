@@ -4,7 +4,7 @@ module.exports = {
   dotenvFile: () => {
     const BUILD_TARGET = process.env.BUILD_TARGET;
     const NODE_ENV = process.env.NODE_ENV;
-    const dotEnvBase = '.env';
+    const dotEnvBase = 'config/env/.env';
 
     const dotenvFiles = [
       BUILD_TARGET && NODE_ENV && `${dotEnvBase}.${BUILD_TARGET}.${NODE_ENV}.local`,

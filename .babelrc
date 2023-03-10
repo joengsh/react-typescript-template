@@ -1,4 +1,4 @@
 {
-  "presets": ["@babel/react", "@babel/typescript", ["@babel/env", { "modules": false }]],
+  "presets": ["@babel/react", "@babel/typescript", ["@babel/preset-env", { "modules": false }]],
   "plugins": ["istanbul"]
 }

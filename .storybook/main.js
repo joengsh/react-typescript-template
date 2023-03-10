@@ -18,6 +18,9 @@ module.exports = {
         postcssLoaderOptions: {
           // When using postCSS 8
           implementation: require('postcss'),
+          postcssOptions: {
+            config: 'config/postcss.config.js',
+          },
         },
       },
     },

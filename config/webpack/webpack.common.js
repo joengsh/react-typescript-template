@@ -84,7 +84,7 @@ function getLoaders() {
   };
 
   const cssRule = {
-    test: /\.css$/,
+    test: /\.(s)?css$/,
     use: [
       MiniCssExtractPlugin.loader,
       'css-loader',

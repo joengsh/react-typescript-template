@@ -1,0 +1,32 @@
+.gradient-text {
+  /* the thickness of the line */
+  /* --b: 0.1em;  */
+  /* the start color */
+  /* --c: #f3ec78;  */
+  /* the end color */
+  /* --e: #e7825e;  */
+  /* the original color */
+  /* --o: #000;  */
+  /* the duration */
+  /* --d: 0.2s; */
+
+  display: inline-block;
+  padding: 0 0.4em;
+
+  color: #0000;
+  background: linear-gradient(90deg, var(--c, var(--e)) 0%, var(--e) 50%, var(--o) 0)
+      calc(100% - var(--_p, 0%)) 0%/ 200% 100% no-repeat,
+    linear-gradient(var(--e) 0 0) var(--_p, 0%) 50% / var(--b) calc(100% - var(--_p, 0%)) no-repeat;
+  transition: var(--d) calc(var(--d) - var(--_s, 0s)) linear, background-size var(--d) var(--_s, 0s);
+
+  background-clip: text, padding-box;
+  -webkit-background-clip: text, padding-box;
+  -webkit-text-fill-color: transparent;
+  -moz-background-clip: text, padding-box;
+  -moz-text-fill-color: transparent;
+}
+
+.gradient-text:hover {
+  --_p: 100%;
+  --_s: var(--d);
+}

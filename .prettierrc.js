@@ -1,3 +1,10 @@
 module.exports = {
-  ...require('@joengsh/prettier-config'),
+  tabWidth: 2,
+  semi: true,
+  singleQuote: true,
+  trailingComma: 'es5',
+  printWidth: 100,
+  useTabs: false,
+  endOfLine: 'lf',
+  bracketSpacing: true,
 };

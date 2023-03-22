@@ -1,6 +1,6 @@
-import Footer from '@components/organisms/Footer/Footer';
-import Hero from '@components/organisms/Hero/Hero';
-import Carousel from '@components/molecules/Carousel/Carousel';
+import Footer from '@components/Footer/Footer';
+import Hero from '@components/Hero/Hero';
+import Carousel from '@/components/Carousel/Carousel';
 import React from 'react';
 import Logo from '@assets/react.svg';
 import 'tw-elements';
